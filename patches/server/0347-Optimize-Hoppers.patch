@@ -35,10 +35,10 @@ index a0b04a04f90ef79edae77e6ab4cddd2a7d299abf..7dbb7f0e476c82fcbec7b51b62be18ad
  }
  
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index c6409dfa739f0056484e70d2be4cd448e868d6bb..e31eab1baaa77dfb6a3e804481d91b91b6878f65 100644
+index c435984d3ee122437b7e2f11a8e3d3a182de3b52..62bc142b89c484e28b65ba80ce23fcb14168d979 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1420,6 +1420,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1419,6 +1419,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          while (iterator.hasNext()) {
              ServerLevel worldserver = (ServerLevel) iterator.next();
              worldserver.hasPhysicsEvent =  org.bukkit.event.block.BlockPhysicsEvent.getHandlerList().getRegisteredListeners().length > 0; // Paper

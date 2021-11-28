@@ -5,10 +5,10 @@ Subject: [PATCH] ProfileWhitelistVerifyEvent
 
 
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 61086dbcd852bdb2e5b6083ae8781a5265db7829..4f56bb45b9bdaf3de02c5f331760339f4397eafc 100644
+index 94c6dea9ad783dc0b1dbea1bde6f82cd1505d973..64281abe89d5977185a57da9c8d2dd037fb60032 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -615,9 +615,9 @@ public abstract class PlayerList {
+@@ -614,9 +614,9 @@ public abstract class PlayerList {
  
              // return chatmessage;
              event.disallow(PlayerLoginEvent.Result.KICK_BANNED, PaperAdventure.asAdventure(chatmessage)); // Paper - Adventure
@@ -21,7 +21,7 @@ index 61086dbcd852bdb2e5b6083ae8781a5265db7829..4f56bb45b9bdaf3de02c5f331760339f
          } else if (this.getIpBans().isBanned(socketaddress) && !this.getIpBans().get(socketaddress).hasExpired()) {
              IpBanListEntry ipbanentry = this.ipBans.get(socketaddress);
  
-@@ -998,9 +998,25 @@ public abstract class PlayerList {
+@@ -997,9 +997,25 @@ public abstract class PlayerList {
          this.server.getCommands().sendCommands(player);
      }
  

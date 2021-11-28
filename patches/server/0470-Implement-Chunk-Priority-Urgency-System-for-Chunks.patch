@@ -1128,10 +1128,10 @@ index 8770fe0db46b01e8b608637df4f1a669a3f4cdde..3c1698ba0d3bc412ab957777d9b5211d
      private final String name;
      private final Comparator<T> comparator;
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index ed4e13528cf0fe48384efcb3f55cb5149f4cf681..55b7036a7b7fe45f2b8694bf8ab039d92de1c3bb 100644
+index a68c040166013b8b1e8661128e4b52bf297da15d..36f42f0b06e47466ffea88b7499466d15cde55f1 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -175,6 +175,7 @@ public abstract class PlayerList {
+@@ -174,6 +174,7 @@ public abstract class PlayerList {
      }
  
      public void placeNewPlayer(Connection connection, ServerPlayer player) {
@@ -1139,7 +1139,7 @@ index ed4e13528cf0fe48384efcb3f55cb5149f4cf681..55b7036a7b7fe45f2b8694bf8ab039d9
          ServerPlayer prev = pendingPlayers.put(player.getUUID(), player);// Paper
          if (prev != null) {
              disconnectPendingPlayer(prev);
-@@ -285,8 +286,8 @@ public abstract class PlayerList {
+@@ -284,8 +285,8 @@ public abstract class PlayerList {
          net.minecraft.server.level.ChunkMap playerChunkMap = worldserver1.getChunkSource().chunkMap;
          net.minecraft.server.level.DistanceManager distanceManager = playerChunkMap.distanceManager;
          distanceManager.addTicketAtLevel(net.minecraft.server.level.TicketType.LOGIN, pos, 31, pos.toLong());

@@ -18,10 +18,10 @@ index b6230ce81d50da84b2db9446232c83bde3632a91..df0b08628d736b7f75120f1b9840784f
  
                  this.awardStat(Stats.DROP);
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 6f406d8d945f3938961fe1a0df42f8cb558d8716..44c2820a33ed40b4ef2ebd20708347d3cc2437ae 100644
+index 4106b967e0d7e9e59f0004b66507ba2bf4856e1a..e1e986f15cc04e31b98221e3a873df8770e6ce43 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -703,6 +703,11 @@ public abstract class Player extends LivingEntity {
+@@ -701,6 +701,11 @@ public abstract class Player extends LivingEntity {
              }
  
              double d0 = this.getEyeY() - 0.30000001192092896D;

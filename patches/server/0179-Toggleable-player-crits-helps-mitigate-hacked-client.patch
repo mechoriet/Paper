@@ -21,10 +21,10 @@ index 9884d11cef96630dbb1f2b82bc02bcb5cebcd91b..a60d3d62f7db7e91ba377fef6c28f4bd
      private void allChunksAreSlimeChunks() {
          allChunksAreSlimeChunks = getBoolean("all-chunks-are-slime-chunks", false);
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index f6a55bb449bcb06821f5b83d3d4d493df277721e..a182c78c3718a6b8f56578c5e6b35ce5742046fe 100644
+index 4d7e1d5bfa87a135248d6a525dbac972b6a5eb6a..119068fe155df6ac3bae00c382fd9f6886552b23 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -1187,6 +1187,7 @@ public abstract class Player extends LivingEntity {
+@@ -1185,6 +1185,7 @@ public abstract class Player extends LivingEntity {
  
                      boolean flag2 = flag && this.fallDistance > 0.0F && !this.onGround && !this.onClimbable() && !this.isInWater() && !this.hasEffect(MobEffects.BLINDNESS) && !this.isPassenger() && target instanceof LivingEntity;
  

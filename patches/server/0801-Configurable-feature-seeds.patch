@@ -19,10 +19,10 @@ index ee53453440177537fc653ea156785d7591498614..5e3b7fb2e0b7608610555cd23e7ad25a
              }
              final Object val = config.get(key);
 diff --git a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-index dd3a0903f9a26986edca4d1d6a78d0404069e990..82a6b481c745cc6f70e2afa922b6c362161069fa 100644
+index 60918b07d6247c3d3ddbb6d320bdd0456726d214..a9ca8f9351e7db0ddf992a33fd189618cc23bf08 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-@@ -913,6 +913,55 @@ public class PaperWorldConfig {
+@@ -914,6 +914,55 @@ public class PaperWorldConfig {
          return table;
      }
  

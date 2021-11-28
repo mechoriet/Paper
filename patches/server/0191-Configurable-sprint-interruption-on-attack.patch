@@ -20,10 +20,10 @@ index a60d3d62f7db7e91ba377fef6c28f4bde730f24a..861f9d6a42dbcc5a96c24b29b4bb80a4
 +    }
  }
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 85b50297d92c45872942effb770d0e85d864681e..74ef6bdcb193081ca5e46841200857b6491aeeff 100644
+index c876c7ad15a917aa5c4d5c3f553e879e766990ad..759f8d135575d84bb163d9f05ec1807315623339 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -1236,7 +1236,11 @@ public abstract class Player extends LivingEntity {
+@@ -1234,7 +1234,11 @@ public abstract class Player extends LivingEntity {
                              }
  
                              this.setDeltaMovement(this.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));

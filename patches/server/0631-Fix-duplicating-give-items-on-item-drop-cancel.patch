@@ -42,10 +42,10 @@ index 58941830a4bd024fcdb97df47783c82062e9167f..a0dc380e90415de9068ea408d62a1605
                              itemEntity2.makeFakeItem();
                          }
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 869c765fba6b8b7f37f0699a05b74b312dfde30d..fad2c1206944c0dbca4317ed84be335f154d1a45 100644
+index eaf262841bbc48c17f55a274b90c7d7da053381a..9ee734f2afa96d8b4b9043d9f4ad78e0dfeeb4a4 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -683,6 +683,13 @@ public abstract class Player extends LivingEntity {
+@@ -681,6 +681,13 @@ public abstract class Player extends LivingEntity {
  
      @Nullable
      public ItemEntity drop(ItemStack stack, boolean throwRandomly, boolean retainOwnership) {
@@ -59,7 +59,7 @@ index 869c765fba6b8b7f37f0699a05b74b312dfde30d..fad2c1206944c0dbca4317ed84be335f
          if (stack.isEmpty()) {
              return null;
          } else {
-@@ -724,7 +731,7 @@ public abstract class Player extends LivingEntity {
+@@ -722,7 +729,7 @@ public abstract class Player extends LivingEntity {
              PlayerDropItemEvent event = new PlayerDropItemEvent(player, drop);
              this.level.getCraftServer().getPluginManager().callEvent(event);
  

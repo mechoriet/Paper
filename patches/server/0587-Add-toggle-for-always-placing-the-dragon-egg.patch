@@ -5,10 +5,10 @@ Subject: [PATCH] Add toggle for always placing the dragon egg
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-index e1bb630f2352a30e351c7e1535ff82fd93849609..d891a7d54688a10fe4fe16f2f5037a57a9c58e86 100644
+index 03817fd9f9519e27a1ee99db158a4126ad2fc159..cd5ca8f1647a6a3d698ef30fb443898243a68d9d 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-@@ -721,6 +721,11 @@ public class PaperWorldConfig {
+@@ -722,6 +722,11 @@ public class PaperWorldConfig {
          perPlayerMobSpawns = getBoolean("per-player-mob-spawns", true);
      }
  

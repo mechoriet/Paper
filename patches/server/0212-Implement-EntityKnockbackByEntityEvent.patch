@@ -6,7 +6,7 @@ Subject: [PATCH] Implement EntityKnockbackByEntityEvent
 This event is called when an entity receives knockback by another entity.
 
 diff --git a/src/main/java/net/minecraft/world/entity/LivingEntity.java b/src/main/java/net/minecraft/world/entity/LivingEntity.java
-index 4ca6feea7910d613ffcf4339d809f98f34e17ffb..a1de99f07f47e4b378b0c36ea158ce0693ee2686 100644
+index e0d958b2e23e1128b09a27c32836aa3fd012c49d..16936d7ce3faec09ccdde58b2bf2b6f9db0f9cd8 100644
 --- a/src/main/java/net/minecraft/world/entity/LivingEntity.java
 +++ b/src/main/java/net/minecraft/world/entity/LivingEntity.java
 @@ -1432,7 +1432,7 @@ public abstract class LivingEntity extends Entity {
@@ -82,10 +82,10 @@ index f6fd39823f04f8071c616d40a838b01e7159c5a1..e1cdf3ce38404d3f40be59e4cd3ad2b9
              serverLevel.playSound((Player)null, pathfinderMob, this.getImpactSound.apply(pathfinderMob), SoundSource.HOSTILE, 1.0F, 1.0F);
          } else {
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 2909db2666c653a940830f29435b82480dc6825e..ca87d9e2543f7bca8d1c2b0c455cf55b82c9b4c0 100644
+index bf3fddb1efff8da1d5abf34aba154a702bd0d512..d4115f9c8aee86c94b981431366c69704793a419 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -1230,7 +1230,7 @@ public abstract class Player extends LivingEntity {
+@@ -1228,7 +1228,7 @@ public abstract class Player extends LivingEntity {
                      if (flag5) {
                          if (i > 0) {
                              if (target instanceof LivingEntity) {
@@ -94,7 +94,7 @@ index 2909db2666c653a940830f29435b82480dc6825e..ca87d9e2543f7bca8d1c2b0c455cf55b
                              } else {
                                  target.push((double) (-Mth.sin(this.getYRot() * 0.017453292F) * (float) i * 0.5F), 0.1D, (double) (Mth.cos(this.getYRot() * 0.017453292F) * (float) i * 0.5F));
                              }
-@@ -1254,7 +1254,7 @@ public abstract class Player extends LivingEntity {
+@@ -1252,7 +1252,7 @@ public abstract class Player extends LivingEntity {
                                  if (entityliving != this && entityliving != target && !this.isAlliedTo((Entity) entityliving) && (!(entityliving instanceof ArmorStand) || !((ArmorStand) entityliving).isMarker()) && this.distanceToSqr((Entity) entityliving) < 9.0D) {
                                      // CraftBukkit start - Only apply knockback if the damage hits
                                      if (entityliving.hurt(DamageSource.playerAttack(this).sweep(), f4)) {

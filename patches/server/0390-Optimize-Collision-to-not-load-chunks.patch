@@ -14,10 +14,10 @@ movement will load only the chunk the player enters anyways and avoids loading
 massive amounts of surrounding chunks due to large AABB lookups.
 
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 494b18a3dfa05b5e6ecbb9b99abf06bfe6e1d166..5c54bc74c668778161ae47c9160f8c4c9a566847 100644
+index 0637584212f225cdb6d9faa053877bf1a9c6f636..f901e41b42ec5a9838da8f5080774d102dc09e50 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -791,6 +791,7 @@ public abstract class PlayerList {
+@@ -790,6 +790,7 @@ public abstract class PlayerList {
          entityplayer1.forceSetPositionRotation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
          // CraftBukkit end
  

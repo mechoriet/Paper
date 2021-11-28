@@ -20,22 +20,14 @@ index e7534ed3f995be64c99399ab76e98086cf37bb7f..c008f1f7f0a1e1b8bf34f2702cb44c5f
 +    }
  }
 diff --git a/src/main/java/net/minecraft/world/level/block/SpreadingSnowyDirtBlock.java b/src/main/java/net/minecraft/world/level/block/SpreadingSnowyDirtBlock.java
-index 954defe131bdcd81178e3bd31755eb18b9aef026..29f4da5962bf596da7c557d9aa61677f5604b0a0 100644
+index 954defe131bdcd81178e3bd31755eb18b9aef026..32d53cb62042742cf6968674584248cb8f1fdb76 100644
 --- a/src/main/java/net/minecraft/world/level/block/SpreadingSnowyDirtBlock.java
 +++ b/src/main/java/net/minecraft/world/level/block/SpreadingSnowyDirtBlock.java
-@@ -3,6 +3,7 @@ package net.minecraft.world.level.block;
- import java.util.Random;
- import net.minecraft.core.BlockPos;
- import net.minecraft.core.Direction;
-+import net.minecraft.server.MinecraftServer;
- import net.minecraft.server.level.ServerLevel;
- import net.minecraft.tags.FluidTags;
- import net.minecraft.tags.Tag;
-@@ -40,6 +41,7 @@ public abstract class SpreadingSnowyDirtBlock extends SnowyDirtBlock {
+@@ -40,6 +40,7 @@ public abstract class SpreadingSnowyDirtBlock extends SnowyDirtBlock {
  
      @Override
      public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
-+        if (this instanceof GrassBlock && world.paperConfig.grassUpdateRate != 1 && (world.paperConfig.grassUpdateRate < 1 || (MinecraftServer.currentTick + pos.hashCode()) % world.paperConfig.grassUpdateRate != 0)) { return; } // Paper
++        if (this instanceof GrassBlock && world.paperConfig.grassUpdateRate != 1 && (world.paperConfig.grassUpdateRate < 1 || (net.minecraft.server.MinecraftServer.currentTick + pos.hashCode()) % world.paperConfig.grassUpdateRate != 0)) { return; } // Paper
          if (!SpreadingSnowyDirtBlock.canBeGrass(state, world, pos)) {
              // CraftBukkit start
              if (org.bukkit.craftbukkit.event.CraftEventFactory.callBlockFadeEvent(world, pos, Blocks.DIRT.defaultBlockState()).isCancelled()) {

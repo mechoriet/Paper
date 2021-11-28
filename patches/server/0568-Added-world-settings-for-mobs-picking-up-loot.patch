@@ -5,10 +5,10 @@ Subject: [PATCH] Added world settings for mobs picking up loot
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-index 3ad93abb830d307a0d2cf8cb4554bf3fa37cb91d..556bf08491466a061119338a05d6165d041e6668 100644
+index 29330dc770fccdc6bde93f9dc1900c1979c037ec..d12704ba15a82813297e295acba224c718c4ac80 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-@@ -688,6 +688,14 @@ public class PaperWorldConfig {
+@@ -689,6 +689,14 @@ public class PaperWorldConfig {
          phantomOnlyAttackInsomniacs = getBoolean("phantoms-only-attack-insomniacs", phantomOnlyAttackInsomniacs);
      }
  

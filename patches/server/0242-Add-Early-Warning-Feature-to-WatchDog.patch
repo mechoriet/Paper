@@ -36,10 +36,10 @@ index 1508afe593a1b62e3a33455707e2552468786614..73b49d24cd428e2328d56f5f42333a25
      public static int tabSpamLimit = 500;
      private static void tabSpamLimiters() {
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index e9333b85100d7670b2be7df6e847dfca3084ff55..44f32023db3edaae107f48fd9b96baf5432417d9 100644
+index a22e9fc45eb5b9ef00fa6ac353e07910e475f00f..74a3543c52560f7eba9cc1ec97082a02e55010c1 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1084,6 +1084,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1083,6 +1083,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
                  this.updateStatusIcon(this.status);
  
                  // Spigot start
@@ -68,7 +68,7 @@ index 294e90195cd0d00ca6d77136d886797cb39cfca5..199397a95fc2fbc0b64bcad81c79f24b
  
      @Override
 diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index 8e7630de11637a75a4a54a22283cbb2d0c7e6438..ba0e8902e7205bc6da88efd28be70ece04cc1974 100644
+index 682f0b57ed131d9c0c50941bf733731f63c8f861..5097623eee5c1c9412f0c4a14f70b93e21ea295e 100644
 --- a/src/main/java/org/spigotmc/SpigotConfig.java
 +++ b/src/main/java/org/spigotmc/SpigotConfig.java
 @@ -229,7 +229,7 @@ public class SpigotConfig

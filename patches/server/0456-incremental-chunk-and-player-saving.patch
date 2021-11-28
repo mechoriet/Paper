@@ -11,7 +11,7 @@ index ebbbffd209c6796bc608992e293035141a122d1f..4fb6b2153117f54a2b0ca940de4c0ee2
 @@ -458,4 +458,14 @@ public class PaperConfig {
          set("settings.unsupported-settings.allow-tnt-duplication", null);
      }
-
+ 
 +    public static int playerAutoSaveRate = -1;
 +    public static int maxPlayerAutoSavePerTick = 10;
 +    private static void playerAutoSaveRate() {
@@ -24,13 +24,14 @@ index ebbbffd209c6796bc608992e293035141a122d1f..4fb6b2153117f54a2b0ca940de4c0ee2
 +    }
  }
 diff --git a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-index 845f105457d659a4bd88d4a8ce91b20d6abb7865..bf0c6e1b2b1934bc3fa5c17c414b3730c5ac0833 100644
+index 845f105457d659a4bd88d4a8ce91b20d6abb7865..9e0e31dd3b4a1ddb95d5cc0d283ae9eb69d79c0d 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-@@ -62,6 +62,21 @@ public class PaperWorldConfig {
+@@ -62,6 +62,22 @@ public class PaperWorldConfig {
          log( "Keep Spawn Loaded Range: " + (keepLoadedRange/16));
      }
-
+ 
++
 +    public int autoSavePeriod = -1;
 +    private void autoSavePeriod() {
 +        autoSavePeriod = getInt("auto-save-interval", -1);
@@ -50,11 +51,11 @@ index 845f105457d659a4bd88d4a8ce91b20d6abb7865..bf0c6e1b2b1934bc3fa5c17c414b3730
          config.addDefault("world-settings.default." + path, def);
          return config.getBoolean("world-settings." + worldName + "." + path, config.getBoolean("world-settings.default." + path));
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 4351dd9c293d1db48c87c5df28bcb2b9a59583f7..faa6f999f620712b90df465e0dc68e4ff35f94af 100644
+index 4a3d8b381ea759710780c8c02d2265690360db90..c3ef36717a75765b6b955dce9556f20837724ce3 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -901,7 +901,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
-
+@@ -900,7 +900,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+ 
          try {
              this.isSaving = true;
 -            this.getPlayerList().saveAll();
@@ -62,21 +63,22 @@ index 4351dd9c293d1db48c87c5df28bcb2b9a59583f7..faa6f999f620712b90df465e0dc68e4f
              flag3 = this.saveAllChunks(suppressLogs, flush, force);
          } finally {
              this.isSaving = false;
-@@ -1408,13 +1408,28 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1407,13 +1407,29 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              }
          }
-
+ 
 -        if (this.autosavePeriod > 0 && this.tickCount % this.autosavePeriod == 0) { // CraftBukkit
 -            MinecraftServer.LOGGER.debug("Autosave started");
 -            this.profiler.push("save");
 -            this.saveEverything(true, false, false);
 -            this.profiler.pop();
 -            MinecraftServer.LOGGER.debug("Autosave finished");
++
 +        // Paper start - incremental chunk and player saving
 +        int playerSaveInterval = com.destroystokyo.paper.PaperConfig.playerAutoSaveRate;
 +        if (playerSaveInterval < 0) {
 +            playerSaveInterval = autosavePeriod;
-         }
++        }
 +        this.profiler.push("save");
 +        final boolean fullSave = autosavePeriod > 0 && this.tickCount % autosavePeriod == 0;
 +        try {
@@ -91,7 +93,7 @@ index 4351dd9c293d1db48c87c5df28bcb2b9a59583f7..faa6f999f620712b90df465e0dc68e4f
 +            }
 +        } finally {
 +            this.isSaving = false;
-+        }
+         }
 +        this.profiler.pop();
 +        // Paper end
          io.papermc.paper.util.CachedLists.reset(); // Paper
@@ -107,13 +109,13 @@ index 0f859c9548487bcf3b254e39027ec4114ec6d4d7..35ff6e3b796068a6dd4a422a0106747e
      // Paper end - optimise isOutsideOfRange
 +    long lastAutoSaveTime; // Paper - incremental autosave
 +    long inactiveTimeStart; // Paper - incremental autosave
-
+ 
      public ChunkHolder(ChunkPos pos, int level, LevelHeightAccessor world, LevelLightEngine lightingProvider, ChunkHolder.LevelChangeListener levelUpdateListener, ChunkHolder.PlayerProvider playersWatchingChunkProvider) {
          this.futures = new AtomicReferenceArray(ChunkHolder.CHUNK_STATUSES.size());
 @@ -473,7 +475,19 @@ public class ChunkHolder {
          boolean flag2 = playerchunk_state.isOrAfter(ChunkHolder.FullChunkStatus.BORDER);
          boolean flag3 = playerchunk_state1.isOrAfter(ChunkHolder.FullChunkStatus.BORDER);
-
+ 
 +        boolean prevHasBeenLoaded = this.wasAccessibleSinceLastSave; // Paper
          this.wasAccessibleSinceLastSave |= flag3;
 +        // Paper start - incremental autosave
@@ -132,7 +134,7 @@ index 0f859c9548487bcf3b254e39027ec4114ec6d4d7..35ff6e3b796068a6dd4a422a0106747e
              this.fullChunkFuture = chunkStorage.prepareAccessibleChunk(this);
 @@ -604,9 +618,33 @@ public class ChunkHolder {
      }
-
+ 
      public void refreshAccessibility() {
 +        boolean prev = this.wasAccessibleSinceLastSave; // Paper
          this.wasAccessibleSinceLastSave = ChunkHolder.getFullChunkStatus(this.ticketLevel).isOrAfter(ChunkHolder.FullChunkStatus.BORDER);
@@ -153,7 +155,7 @@ index 0f859c9548487bcf3b254e39027ec4114ec6d4d7..35ff6e3b796068a6dd4a422a0106747e
 +        }
 +        // Paper end
      }
-
+ 
 +    // Paper start - incremental autosave
 +    public boolean setHasBeenLoaded() {
 +        this.wasAccessibleSinceLastSave = getFullChunkStatus(this.ticketLevel).isOrAfter(ChunkHolder.FullChunkStatus.BORDER);
@@ -165,7 +167,7 @@ index 0f859c9548487bcf3b254e39027ec4114ec6d4d7..35ff6e3b796068a6dd4a422a0106747e
          for (int i = 0; i < this.futures.length(); ++i) {
              CompletableFuture<Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure>> completablefuture = (CompletableFuture) this.futures.get(i);
 diff --git a/src/main/java/net/minecraft/server/level/ChunkMap.java b/src/main/java/net/minecraft/server/level/ChunkMap.java
-index c9a10f327f971e68bf5bb4ed0793a046233e3d74..a65f3f24fe00b130520ba9af178f1cf7ad3ece26 100644
+index c9a10f327f971e68bf5bb4ed0793a046233e3d74..9054d718d612a13f282e849a9f45832282173d1e 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkMap.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkMap.java
 @@ -101,6 +101,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureMana
@@ -177,9 +179,9 @@ index c9a10f327f971e68bf5bb4ed0793a046233e3d74..a65f3f24fe00b130520ba9af178f1cf7
  import org.apache.commons.lang3.mutable.MutableObject;
  import org.apache.logging.log4j.LogManager;
 @@ -677,6 +678,64 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
-
+ 
      }
-
+ 
 +    // Paper start - incremental autosave
 +    final ObjectRBTreeSet<ChunkHolder> autoSaveQueue = new ObjectRBTreeSet<>((playerchunk1, playerchunk2) -> {
 +        int timeCompare =  Long.compare(playerchunk1.lastAutoSaveTime, playerchunk2.lastAutoSaveTime);
@@ -244,36 +246,36 @@ index c9a10f327f971e68bf5bb4ed0793a046233e3d74..a65f3f24fe00b130520ba9af178f1cf7
 @@ -772,7 +831,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
          int l = 0;
          ObjectIterator objectiterator = this.visibleChunkMap.values().iterator();
-
+ 
 -        while (l < 20 && shouldKeepTicking.getAsBoolean() && objectiterator.hasNext()) {
 +        while (false && l < 20 && shouldKeepTicking.getAsBoolean() && objectiterator.hasNext()) { // Paper - incremental chunk and player saving
              if (this.saveChunkIfNeeded((ChunkHolder) objectiterator.next())) {
                  ++l;
              }
 @@ -814,6 +873,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
-
+ 
                          this.level.unload(chunk);
                      }
 +                    this.autoSaveQueue.remove(holder); // Paper
-
+ 
                      this.lightEngine.updateChunkStatus(ichunkaccess.getPos());
                      this.lightEngine.tryScheduleUpdate();
 @@ -1211,6 +1271,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
              asyncSaveData, chunk);
-
+ 
          chunk.setUnsaved(false);
 +        chunk.setLastSaved(this.level.getGameTime()); // Paper - track last saved time
      }
      // Paper end
-
+ 
 @@ -1220,6 +1281,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
          if (!chunk.isUnsaved()) {
              return false;
          } else {
-+            chunk.setLastSaved(this.level.getGameTime()); // Paper - track save time
++            chunk.setLastSaved(this.level.getGameTime()); // Paper - track last saved time
              chunk.setUnsaved(false);
              ChunkPos chunkcoordintpair = chunk.getPos();
-
+ 
 diff --git a/src/main/java/net/minecraft/server/level/ServerChunkCache.java b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
 index f02643d12ac1959d92e895174b22775ee18a32d8..f9caa9524ebf0e1f073f23e97c84095b25a30023 100644
 --- a/src/main/java/net/minecraft/server/level/ServerChunkCache.java
@@ -281,7 +283,7 @@ index f02643d12ac1959d92e895174b22775ee18a32d8..f9caa9524ebf0e1f073f23e97c84095b
 @@ -825,6 +825,15 @@ public class ServerChunkCache extends ChunkSource {
          } // Paper - Timings
      }
-
+ 
 +    // Paper start - duplicate save, but call incremental
 +    public void saveIncrementally() {
 +        this.runDistanceManagerUpdates();
@@ -301,7 +303,7 @@ index a5f0fe87bd5d75bf9a12ef284b0d635d8f6dd3a1..d55d2627b7e0c847250c551989d43828
 @@ -1055,6 +1055,37 @@ public class ServerLevel extends Level implements WorldGenLevel {
          return !this.server.isUnderSpawnProtection(this, pos, player) && this.getWorldBorder().isWithinBounds(pos);
      }
-
+ 
 +    // Paper start - derived from below
 +    public void saveIncrementally(boolean doFull) {
 +        ServerChunkCache chunkproviderserver = this.getChunkSource();
@@ -335,34 +337,34 @@ index a5f0fe87bd5d75bf9a12ef284b0d635d8f6dd3a1..d55d2627b7e0c847250c551989d43828
 +
      public void save(@Nullable ProgressListener progressListener, boolean flush, boolean savingDisabled) {
          ServerChunkCache chunkproviderserver = this.getChunkSource();
-
+ 
 diff --git a/src/main/java/net/minecraft/server/level/ServerPlayer.java b/src/main/java/net/minecraft/server/level/ServerPlayer.java
 index 2f13055a39c26fe12d2c1094103186635e536166..4b83617a81db1749faaf49fc3ee77e44846dce1a 100644
 --- a/src/main/java/net/minecraft/server/level/ServerPlayer.java
 +++ b/src/main/java/net/minecraft/server/level/ServerPlayer.java
 @@ -171,6 +171,7 @@ public class ServerPlayer extends Player {
      public final int getViewDistance() { return this.getLevel().getChunkSource().chunkMap.viewDistance - 1; } // Paper - placeholder
-
+ 
      private static final Logger LOGGER = LogManager.getLogger();
 +    public long lastSave = MinecraftServer.currentTick; // Paper
      private static final int NEUTRAL_MOB_DEATH_NOTIFICATION_RADII_XZ = 32;
      private static final int NEUTRAL_MOB_DEATH_NOTIFICATION_RADII_Y = 10;
      public ServerGamePacketListenerImpl connection;
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 30fa9ac91be2ecc55efeee9222835cbedc53acff..a40ca089d92df8f3ea0a444e3293531e787b196b 100644
+index 4d978299e875bc31f30a5cc2d7b02bf5b96002c3..5ce563465e08095b808aca2332012131b4562006 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -556,6 +556,7 @@ public abstract class PlayerList {
+@@ -555,6 +555,7 @@ public abstract class PlayerList {
      protected void save(ServerPlayer player) {
          if (!player.getBukkitEntity().isPersistent()) return; // CraftBukkit
          if (!player.didPlayerJoinEvent) return; // Paper - If we never fired PJE, we disconnected during login. Data has not changed, and additionally, our saved vehicle is not loaded! If we save now, we will lose our vehicle (CraftBukkit bug)
 +        player.lastSave = MinecraftServer.currentTick; // Paper
          this.playerIo.save(player);
          ServerStatsCounter serverstatisticmanager = (ServerStatsCounter) player.getStats(); // CraftBukkit
-
-@@ -1158,10 +1159,22 @@ public abstract class PlayerList {
+ 
+@@ -1157,10 +1158,22 @@ public abstract class PlayerList {
      }
-
+ 
      public void saveAll() {
 +        // Paper start - incremental player saving
 +        this.saveAll(-1);
@@ -393,11 +395,11 @@ index 04b58d6aec04cc98777f88c2bcc9a820c5fd2f57..a44901edc49259ebbbb4367b0d10b8da
          return this;
      }
 +    public void setLastSaved(long ticks) {} // Paper
-
+ 
      // CraftBukkit start - decompile error
      public static record TicksToSave(SerializableTickContainer<Block> blocks, SerializableTickContainer<Fluid> fluids) {
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 9d67e15e7f168a503ced41ae95cdf5c4f4e7417c..7d061d79a47d095fb1e496345e8594d9e5d5d5f9 100644
+index 3a5aae47e6647870debe391b351832fc94a51bb8..e4ed80576e89e86bc25ba06899756d288a888c10 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -86,6 +86,12 @@ public class LevelChunk extends ChunkAccess {
@@ -410,6 +412,6 @@ index 9d67e15e7f168a503ced41ae95cdf5c4f4e7417c..7d061d79a47d095fb1e496345e8594d9
 +        this.lastSaveTime = ticks;
 +    }
 +    // Paper end
-
+ 
      public LevelChunk(Level world, ChunkPos pos) {
          this(world, pos, UpgradeData.EMPTY, new LevelChunkTicks<>(), new LevelChunkTicks<>(), 0L, (LevelChunkSection[]) null, (LevelChunk.PostLoadProcessor) null, (BlendingData) null);

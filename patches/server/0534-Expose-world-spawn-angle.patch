@@ -5,10 +5,10 @@ Subject: [PATCH] Expose world spawn angle
 
 
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index d414a3abae7dea5b813e41758eccf98cd35bddc2..e7834772e38e61df405be406fe320a646778175a 100644
+index 06b5c713a5a44722a064d1919eefb24184a3dbef..1ccb26f0a7d60a0c143798307d67279936ce0dcb 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -874,7 +874,7 @@ public abstract class PlayerList {
+@@ -873,7 +873,7 @@ public abstract class PlayerList {
              if (location == null) {
                  worldserver1 = this.server.getLevel(Level.OVERWORLD);
                  blockposition = entityplayer1.getSpawnPoint(worldserver1);

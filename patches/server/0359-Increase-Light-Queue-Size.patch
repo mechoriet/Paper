@@ -29,10 +29,10 @@ index 7dbb7f0e476c82fcbec7b51b62be18adab2fac72..c81364946460a6366bf70457c2025d42
  }
  
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 4661d571cd4047c6b7d76de7ba0cb34ada348d63..758a972589b607447dc507c6c4f4b2a62f6a2832 100644
+index 62bc142b89c484e28b65ba80ce23fcb14168d979..8aa3d8b49d519681e035f4ab45e975c17ba64bb3 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -812,7 +812,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -811,7 +811,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          this.executeModerately();
          // CraftBukkit end
          if (worldserver.getWorld().getKeepSpawnInMemory()) worldloadlistener.stop(); // Paper

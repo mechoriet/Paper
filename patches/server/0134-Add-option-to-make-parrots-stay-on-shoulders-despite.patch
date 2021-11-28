@@ -44,10 +44,10 @@ index f9d5af3842696c1a0286098f2d255f44932d4a4a..1eac0962c59fffe47a33903238f7f43e
              case RELEASE_SHIFT_KEY:
                  this.player.setShiftKeyDown(false);
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 6cf50fbfdeee38f8835ad8dd6ec6d16416174067..6da451d587c419ffead981876731b847ce3e81db 100644
+index d766646093a39b347098d1785b049690a1d77397..74464d89b14f6f2e63ba3a1510a2513754ddeccc 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -577,7 +577,7 @@ public abstract class Player extends LivingEntity {
+@@ -575,7 +575,7 @@ public abstract class Player extends LivingEntity {
          this.playShoulderEntityAmbientSound(this.getShoulderEntityLeft());
          this.playShoulderEntityAmbientSound(this.getShoulderEntityRight());
          if (!this.level.isClientSide && (this.fallDistance > 0.5F || this.isInWater()) || this.abilities.flying || this.isSleeping() || this.isInPowderSnow) {

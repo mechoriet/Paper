@@ -5,10 +5,10 @@ Subject: [PATCH] Add sendOpLevel API
 
 
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 236641fa4c325e455de0a5ad83541143f5bc18d1..e04e4cf62d2a7dcf95ffee452dc2ee2e2a4fdf6f 100644
+index 026bec71add2e77b039c05f5baec5ba50346f927..a6f6150f5146ca96f8c6ab5e7391180dac966104 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -1119,6 +1119,11 @@ public abstract class PlayerList {
+@@ -1118,6 +1118,11 @@ public abstract class PlayerList {
      }
  
      private void sendPlayerPermissionLevel(ServerPlayer player, int permissionLevel) {
@@ -20,7 +20,7 @@ index 236641fa4c325e455de0a5ad83541143f5bc18d1..e04e4cf62d2a7dcf95ffee452dc2ee2e
          if (player.connection != null) {
              byte b0;
  
-@@ -1133,8 +1138,10 @@ public abstract class PlayerList {
+@@ -1132,8 +1137,10 @@ public abstract class PlayerList {
              player.connection.send(new ClientboundEntityEventPacket(player, b0));
          }
  

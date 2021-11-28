@@ -25,32 +25,16 @@ index 8c5133defa9d3166cf987a6f1d02f02f0515746d..41b4cc7577b937e22512df00e3d4a344
                                  }
                              }
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 5d37c82bd5cd20aa2d452f0214f3303768e36a3d..6cf50fbfdeee38f8835ad8dd6ec6d16416174067 100644
+index 5d37c82bd5cd20aa2d452f0214f3303768e36a3d..d766646093a39b347098d1785b049690a1d77397 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -87,6 +87,7 @@ import net.minecraft.world.item.ElytraItem;
- import net.minecraft.world.item.ItemCooldowns;
- import net.minecraft.world.item.ItemStack;
- import net.minecraft.world.item.Items;
-+import net.minecraft.world.item.MapItem; // Paper
- import net.minecraft.world.item.ProjectileWeaponItem;
- import net.minecraft.world.item.SwordItem;
- import net.minecraft.world.item.crafting.Recipe;
-@@ -105,6 +106,7 @@ import net.minecraft.world.level.block.entity.SignBlockEntity;
- import net.minecraft.world.level.block.entity.StructureBlockEntity;
- import net.minecraft.world.level.block.state.BlockState;
- import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-+import net.minecraft.world.level.saveddata.maps.MapItemSavedData; // Paper
- import net.minecraft.world.phys.AABB;
- import net.minecraft.world.phys.Vec3;
- import net.minecraft.world.scores.PlayerTeam;
-@@ -730,6 +732,14 @@ public abstract class Player extends LivingEntity {
+@@ -730,6 +730,14 @@ public abstract class Player extends LivingEntity {
                  return null;
              }
              // CraftBukkit end
 +            // Paper start - remove player from map on drop
 +            if (stack.getItem() == Items.FILLED_MAP) {
-+                MapItemSavedData worldmap = MapItem.getSavedData(stack, this.level);
++                net.minecraft.world.level.saveddata.maps.MapItemSavedData worldmap = net.minecraft.world.item.MapItem.getSavedData(stack, this.level);
 +                if (worldmap != null) {
 +                    worldmap.tickCarriedBy(this, stack);
 +                }

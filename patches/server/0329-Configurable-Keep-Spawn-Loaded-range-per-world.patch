@@ -23,10 +23,10 @@ index 92a5e0357328b5d472afd181a77a7ec7b593b88c..624860b6eb087ee412bae3c1aed51a7a
          config.addDefault("world-settings.default." + path, def);
          return config.getBoolean("world-settings." + worldName + "." + path, config.getBoolean("world-settings.default." + path));
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 8a2d49f210370490946b68d213fb504b74f37384..c6409dfa739f0056484e70d2be4cd448e868d6bb 100644
+index 036baaf94984b1f2088ad5d2415bb523ead40982..c435984d3ee122437b7e2f11a8e3d3a182de3b52 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -759,35 +759,36 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -758,35 +758,36 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
  
      // CraftBukkit start
      public void prepareLevels(ChunkProgressListener worldloadlistener, ServerLevel worldserver) {
@@ -75,7 +75,7 @@ index 8a2d49f210370490946b68d213fb504b74f37384..c6409dfa739f0056484e70d2be4cd448
  
          if (true) {
              ServerLevel worldserver1 = worldserver;
-@@ -810,7 +811,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -809,7 +810,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          // this.nextTickTime = SystemUtils.getMillis() + 10L;
          this.executeModerately();
          // CraftBukkit end

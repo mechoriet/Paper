@@ -7,10 +7,10 @@ This fixes a lot of game state issues where packets were delayed for processing
 due to 1.15's new queue but processed while dead.
 
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 6927eeb04a9aa1a33666f3655f2bb889bf046dc9..869c765fba6b8b7f37f0699a05b74b312dfde30d 100644
+index 87d0c361c15cd394dd747ef6ca5e666f31cfa6e1..eaf262841bbc48c17f55a274b90c7d7da053381a 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -1106,7 +1106,7 @@ public abstract class Player extends LivingEntity {
+@@ -1104,7 +1104,7 @@ public abstract class Player extends LivingEntity {
  
      @Override
      protected boolean isImmobile() {

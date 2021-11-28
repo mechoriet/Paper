@@ -29,10 +29,10 @@ index 0000000000000000000000000000000000000000..2d5494d2813b773e60ddba6790b750a9
 +    }
 +}
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 77820cd4d464f2582b57f60d34bc0c2f3622e4ae..7ca3752aa6f4e626c4437857821000101162b2bc 100644
+index 8902a1f5eaf958b861c23b267c8c64a6b322825e..cb8c3231bbe46dcd8952b4ecb24d5213c1ccee82 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -918,6 +918,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -917,6 +917,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
      // CraftBukkit start
      private boolean hasStopped = false;
      public volatile boolean hasFullyShutdown = false; // Paper
@@ -40,7 +40,7 @@ index 77820cd4d464f2582b57f60d34bc0c2f3622e4ae..7ca3752aa6f4e626c443785782100010
      private final Object stopLock = new Object();
      public final boolean hasStopped() {
          synchronized (this.stopLock) {
-@@ -932,6 +933,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -931,6 +932,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              if (this.hasStopped) return;
              this.hasStopped = true;
          }
@@ -48,7 +48,7 @@ index 77820cd4d464f2582b57f60d34bc0c2f3622e4ae..7ca3752aa6f4e626c443785782100010
          // Paper start - kill main thread, and kill it hard
          shutdownThread = Thread.currentThread();
          org.spigotmc.WatchdogThread.doStop(); // Paper
-@@ -1040,6 +1042,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1039,6 +1041,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
      }
      public void safeShutdown(boolean flag, boolean isRestarting) {
          this.isRestarting = isRestarting;

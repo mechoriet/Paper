@@ -6,10 +6,10 @@ Subject: [PATCH] Server Tick Events
 Fires event at start and end of a server tick
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 76923773118ac2f152ba7b3a0bb5d0e71d95533c..e512c30390953b90c9709f30d55585a1379141db 100644
+index e356aed1a771bbbb8daf7f48de8d022f2bb207c1..1979652d7bf433910f5a23da42e3429bbbb30b7c 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1318,6 +1318,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1317,6 +1317,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          });
          isOversleep = false;MinecraftTimings.serverOversleep.stopTiming();
          // Paper end
@@ -17,7 +17,7 @@ index 76923773118ac2f152ba7b3a0bb5d0e71d95533c..e512c30390953b90c9709f30d55585a1
  
          ++this.tickCount;
          this.tickChildren(shouldKeepTicking);
-@@ -1356,6 +1357,11 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1355,6 +1356,11 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              this.runAllTasks();
          }
          // Paper end

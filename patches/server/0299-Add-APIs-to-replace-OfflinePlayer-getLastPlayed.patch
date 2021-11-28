@@ -28,10 +28,10 @@ index f51c416e7938b7905f7efb154ab14cad643962e9..71cd61112fa36d1de2f5fc0dd75993fa
      public boolean queueHealthUpdatePacket = false;
      public net.minecraft.network.protocol.game.ClientboundSetHealthPacket queuedHealthUpdatePacket;
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index fb16158ed403abaac740729cb351cd94a36653ac..e9447ac47a858fbc9e16559c18e377517b8089ac 100644
+index 5541aad2c746652b3ac585cd965fe849302b6add..798b9890c3abcafce982b6c2756cc1b9cc701184 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -173,6 +173,7 @@ public abstract class PlayerList {
+@@ -172,6 +172,7 @@ public abstract class PlayerList {
      }
  
      public void placeNewPlayer(Connection connection, ServerPlayer player) {

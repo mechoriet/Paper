@@ -5,10 +5,10 @@ Subject: [PATCH] Configurable max leash distance
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-index a1c0b9770f4f9b84778db9b42c097af146485420..e1bb630f2352a30e351c7e1535ff82fd93849609 100644
+index 6a44e0d6ea5db1954399a1b5eaf1ac97837b8b58..03817fd9f9519e27a1ee99db158a4126ad2fc159 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-@@ -302,6 +302,12 @@ public class PaperWorldConfig {
+@@ -303,6 +303,12 @@ public class PaperWorldConfig {
          }
      }
  

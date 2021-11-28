@@ -6,10 +6,10 @@ Subject: [PATCH] Use correct LevelStem registry when loading default
 
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 743dd0253e9dffddee28c142d8b5ebdc2a8e670a..519806cee3a45eaaedefa83b7237b073c9bbc332 100644
+index f58bc208d9729c4e4e7e298281f8dbd2325e0c86..fd8c8853d7603e9c804a8776caeedbaccaa626ff 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -634,7 +634,14 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -633,7 +633,14 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              long i = generatorsettings.seed();
              long j = BiomeManager.obfuscateSeed(i);
              List<CustomSpawner> list = ImmutableList.of(new PhantomSpawner(), new PatrolSpawner(), new CatSpawner(), new VillageSiege(), new WanderingTraderSpawner(iworlddataserver));

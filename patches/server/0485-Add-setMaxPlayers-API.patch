@@ -5,10 +5,10 @@ Subject: [PATCH] Add #setMaxPlayers API
 
 
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index e655c806504d6e127e15dca479271d9b211975a3..5c829538a008f1a737380627f7b88c7a0914050f 100644
+index 55bef13013623169067e51a11b283ca4ee9e17a4..24801c45268ecdb6182ac17425265a561c3798ff 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -144,7 +144,7 @@ public abstract class PlayerList {
+@@ -143,7 +143,7 @@ public abstract class PlayerList {
      public final PlayerDataStorage playerIo;
      private boolean doWhiteList;
      private final RegistryAccess.RegistryHolder registryHolder;

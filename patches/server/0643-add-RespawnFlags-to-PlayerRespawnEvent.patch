@@ -18,10 +18,10 @@ index eb811f9fcaf84edce3b59fc5f53cd72ffaf1506c..9daad376b7c837ac5dcda5f54d520e2a
                  } else {
                      if (this.player.getHealth() > 0.0F) {
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 5f099d45203f155abb23c9241b55d34e04f2aa7e..f61c31a028c286399f0921c516b5d94ad52f88b5 100644
+index 8f5f1278daa62c2ef7eea4ce0fb2d872b605e0d3..277f402aa804411fa3735b97042ecd8ce7a5e2ab 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -806,6 +806,12 @@ public abstract class PlayerList {
+@@ -805,6 +805,12 @@ public abstract class PlayerList {
      }
  
      public ServerPlayer respawn(ServerPlayer entityplayer, ServerLevel worldserver, boolean flag, Location location, boolean avoidSuffocation) {
@@ -34,7 +34,7 @@ index 5f099d45203f155abb23c9241b55d34e04f2aa7e..f61c31a028c286399f0921c516b5d94a
          entityplayer.stopRiding(); // CraftBukkit
          this.players.remove(entityplayer);
          this.playersByName.remove(entityplayer.getScoreboardName().toLowerCase(java.util.Locale.ROOT)); // Spigot
-@@ -897,7 +903,7 @@ public abstract class PlayerList {
+@@ -896,7 +902,7 @@ public abstract class PlayerList {
              }
  
              Player respawnPlayer = entityplayer1.getBukkitEntity();

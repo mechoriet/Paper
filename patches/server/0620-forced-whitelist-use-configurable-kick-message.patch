@@ -5,7 +5,7 @@ Subject: [PATCH] forced whitelist: use configurable kick message
 
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 2a0aabd4ca39ecada4d50de338421bc7a2a658f8..6a733008e0d94654dd9973a112e860b7af8b875c 100644
+index 5841410185e82cb3f3df8866155d12471b496b94..649be9397ed38a973e11347d6840453d9ae20ec6 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -73,7 +73,6 @@ import net.minecraft.nbt.NbtOps;

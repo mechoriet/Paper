@@ -7,10 +7,10 @@ Fixes disappearance of held items, when a player gets disconnected and PlayerDro
 Closes #5036
 
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 5077991ca54f848a2e1a3e2f375f0957f68113bd..29864d3c25cea7bbb84a431a82e7b80f4af2966d 100644
+index 3015da4cc42893a91232d609f469426d66f24a7a..35e7c4e3130a15f8e3dd9d91580d404d8a1b4fa4 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -614,6 +614,14 @@ public abstract class PlayerList {
+@@ -613,6 +613,14 @@ public abstract class PlayerList {
          }
          // Paper end
  

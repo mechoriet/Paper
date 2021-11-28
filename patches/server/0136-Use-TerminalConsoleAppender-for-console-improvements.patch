@@ -19,7 +19,7 @@ Other changes:
     configuration
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 552edd36f892bc8d1a0333984987c6d41174d967..04fd8dabc3cb234655e7bf8a61d0e5705335825f 100644
+index 5f1792267c02d1ef4b25444f93ceee52a1dd0661..f19ceb9aa0a4f1d59149ac4a933e191c78b55bda 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -12,7 +12,17 @@ repositories {
@@ -112,7 +112,7 @@ index 0000000000000000000000000000000000000000..685deaa0e5d1ddc13e3a7c0471b1cfcf
 +
 +}
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 6d57327ca2450352a0ff153da00cc1d3b3ac1aca..ad857dc0929bdc11a4be58e1bc2fa6be95eea4c3 100644
+index 2e0ee037f40e152b4e1f4e9a7a9bde8d8b0e18ed..540f2fb738dd82259b038babe4de6c0defb94896 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -9,6 +9,7 @@ import com.mojang.authlib.GameProfile;
@@ -123,7 +123,7 @@ index 6d57327ca2450352a0ff153da00cc1d3b3ac1aca..ad857dc0929bdc11a4be58e1bc2fa6be
  import it.unimi.dsi.fastutil.longs.LongIterator;
  import java.awt.image.BufferedImage;
  import java.io.BufferedWriter;
-@@ -167,7 +168,7 @@ import org.apache.logging.log4j.Logger;
+@@ -166,7 +167,7 @@ import org.apache.logging.log4j.Logger;
  // CraftBukkit start
  import com.mojang.serialization.DynamicOps;
  import com.mojang.serialization.Lifecycle;
@@ -132,7 +132,7 @@ index 6d57327ca2450352a0ff153da00cc1d3b3ac1aca..ad857dc0929bdc11a4be58e1bc2fa6be
  import joptsimple.OptionSet;
  import net.minecraft.resources.RegistryReadOps;
  import net.minecraft.server.bossevents.CustomBossEvents;
-@@ -283,7 +284,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -282,7 +283,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
      public OptionSet options;
      public org.bukkit.command.ConsoleCommandSender console;
      public org.bukkit.command.RemoteConsoleCommandSender remoteConsole;
@@ -141,7 +141,7 @@ index 6d57327ca2450352a0ff153da00cc1d3b3ac1aca..ad857dc0929bdc11a4be58e1bc2fa6be
      public static int currentTick = 0; // Paper - Further improve tick loop
      public java.util.Queue<Runnable> processQueue = new java.util.concurrent.ConcurrentLinkedQueue<Runnable>();
      public int autosavePeriod;
-@@ -366,7 +367,9 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -365,7 +366,9 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          this.options = options;
          this.datapackconfiguration = datapackconfiguration;
          this.vanillaCommandDispatcher = datapackresources.commands; // CraftBukkit
@@ -151,7 +151,7 @@ index 6d57327ca2450352a0ff153da00cc1d3b3ac1aca..ad857dc0929bdc11a4be58e1bc2fa6be
          if (System.console() == null && System.getProperty("jline.terminal") == null) {
              System.setProperty("jline.terminal", "jline.UnsupportedTerminal");
              Main.useJline = false;
-@@ -387,6 +390,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -386,6 +389,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
                  MinecraftServer.LOGGER.warn((String) null, ex);
              }
          }
@@ -160,7 +160,7 @@ index 6d57327ca2450352a0ff153da00cc1d3b3ac1aca..ad857dc0929bdc11a4be58e1bc2fa6be
          Runtime.getRuntime().addShutdownHook(new org.bukkit.craftbukkit.util.ServerShutdownThread(this));
      }
      // CraftBukkit end
-@@ -1174,7 +1179,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1173,7 +1178,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
                  org.spigotmc.WatchdogThread.doStop(); // Spigot
                  // CraftBukkit start - Restore terminal to original settings
                  try {
@@ -169,7 +169,7 @@ index 6d57327ca2450352a0ff153da00cc1d3b3ac1aca..ad857dc0929bdc11a4be58e1bc2fa6be
                  } catch (Exception ignored) {
                  }
                  // CraftBukkit end
-@@ -1562,7 +1567,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1561,7 +1566,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
  
      @Override
      public void sendMessage(Component message, UUID sender) {
@@ -230,10 +230,10 @@ index 2201aeecd9936402825200dd696dc5607fe0f880..eed1d77a91f19722c2d2a3a43184565c
          System.setOut(IoBuilder.forLogger(logger).setLevel(Level.INFO).buildPrintStream());
          System.setErr(IoBuilder.forLogger(logger).setLevel(Level.WARN).buildPrintStream());
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index b5ee56706c04fd9c0c294856860eebff9f62531a..61086dbcd852bdb2e5b6083ae8781a5265db7829 100644
+index d079aa5793d7ed7bea763594ddbfaf48ed888e5f..94c6dea9ad783dc0b1dbea1bde6f82cd1505d973 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -155,8 +155,7 @@ public abstract class PlayerList {
+@@ -154,8 +154,7 @@ public abstract class PlayerList {
  
      public PlayerList(MinecraftServer server, RegistryAccess.RegistryHolder registryManager, PlayerDataStorage saveHandler, int maxPlayers) {
          this.cserver = server.server = new CraftServer((DedicatedServer) server, this);

@@ -81,10 +81,10 @@ index d2dd8b802ecea7fd2efe5f07fcef65c26e1adfbc..33a29890435d6065a2cc4f8e8bf8209c
  
      @Override
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 92a3df6d2435d8800a8173e7be3ba11577f23b5a..24111c47145b296c442982affdbfe045c52386e1 100644
+index 6b2f241436abf171862fa924199818e059789df3..27f04a8ef7a205278c4cc5c31e373d8d327954d5 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -237,7 +237,7 @@ public abstract class PlayerList {
+@@ -236,7 +236,7 @@ public abstract class PlayerList {
          String s1 = "local";
  
          if (connection.getRemoteAddress() != null) {
@@ -93,7 +93,7 @@ index 92a3df6d2435d8800a8173e7be3ba11577f23b5a..24111c47145b296c442982affdbfe045
          }
  
          // Spigot start - spawn location event
-@@ -300,7 +300,7 @@ public abstract class PlayerList {
+@@ -299,7 +299,7 @@ public abstract class PlayerList {
              playerconnection.playerJoinReady = () -> {
                  postChunkLoadJoin(
                      player, finalWorldserver, connection, playerconnection,

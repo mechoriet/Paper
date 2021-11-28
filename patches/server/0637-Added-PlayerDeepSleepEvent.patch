@@ -5,10 +5,10 @@ Subject: [PATCH] Added PlayerDeepSleepEvent
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index fad2c1206944c0dbca4317ed84be335f154d1a45..6f406d8d945f3938961fe1a0df42f8cb558d8716 100644
+index 9ee734f2afa96d8b4b9043d9f4ad78e0dfeeb4a4..4106b967e0d7e9e59f0004b66507ba2bf4856e1a 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -245,6 +245,11 @@ public abstract class Player extends LivingEntity {
+@@ -243,6 +243,11 @@ public abstract class Player extends LivingEntity {
  
          if (this.isSleeping()) {
              ++this.sleepCounter;

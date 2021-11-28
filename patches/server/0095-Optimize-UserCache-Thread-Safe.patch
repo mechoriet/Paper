@@ -12,10 +12,10 @@ the user never changed the default setting for Spigot's save on stop only.
 1.17: TODO does this need the synchronized blocks anymore?
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 9a58a678b07bb45ee0e608fdd662b13fcc04d31c..625a133eacf38fb8b11f4451e063dc21150f0e79 100644
+index 2b39b0c27a3b9a8ba12f21749fdb79a64acb38f1..4f2595d8d2142ac6292b93e8642476e8344e55a3 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -972,7 +972,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -971,7 +971,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          } catch (java.lang.InterruptedException ignored) {} // Paper
          if (org.spigotmc.SpigotConfig.saveUserCacheOnStopOnly) {
              MinecraftServer.LOGGER.info("Saving usercache.json");

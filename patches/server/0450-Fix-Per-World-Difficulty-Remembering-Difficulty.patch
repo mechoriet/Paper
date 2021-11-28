@@ -8,10 +8,10 @@ makes it so that the server keeps the last difficulty used instead
 of restoring the server.properties every single load.
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 7bac10fca1c44768bb7c93362b331f89afbba702..4351dd9c293d1db48c87c5df28bcb2b9a59583f7 100644
+index 47cecaca26e77a916423741dfac9e9d92d935388..4a3d8b381ea759710780c8c02d2265690360db90 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -823,7 +823,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -822,7 +822,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          chunkproviderserver.getLightEngine().setTaskPerBatch(worldserver.paperConfig.lightQueueSize); // Paper - increase light queue size
          // CraftBukkit start
          // this.updateMobSpawningFlags();
@@ -20,7 +20,7 @@ index 7bac10fca1c44768bb7c93362b331f89afbba702..4351dd9c293d1db48c87c5df28bcb2b9
  
          this.forceTicks = false;
          // CraftBukkit end
-@@ -1699,11 +1699,14 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1698,11 +1698,14 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          }
      }
  
@@ -40,7 +40,7 @@ index 7bac10fca1c44768bb7c93362b331f89afbba702..4351dd9c293d1db48c87c5df28bcb2b9
          }
      }
  
-@@ -1717,7 +1720,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1716,7 +1719,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          while (iterator.hasNext()) {
              ServerLevel worldserver = (ServerLevel) iterator.next();
  

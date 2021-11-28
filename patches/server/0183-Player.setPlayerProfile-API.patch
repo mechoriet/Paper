@@ -26,10 +26,10 @@ index 00ef714294b6cce5fec7613eed4ba228a48e3e11..67b300574655854249c1f7440f56a6e8
                              uniqueId = gameProfile.getId();
                              // Paper end
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index a182c78c3718a6b8f56578c5e6b35ce5742046fe..85b50297d92c45872942effb770d0e85d864681e 100644
+index 119068fe155df6ac3bae00c382fd9f6886552b23..c876c7ad15a917aa5c4d5c3f553e879e766990ad 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -171,7 +171,7 @@ public abstract class Player extends LivingEntity {
+@@ -169,7 +169,7 @@ public abstract class Player extends LivingEntity {
      protected int enchantmentSeed;
      protected final float defaultFlySpeed = 0.02F;
      private int lastLevelUpTime;

@@ -16,10 +16,10 @@ handling that should have been handled synchronously will be handled
 synchronously when the server gets shut down.
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 1db2c308584f231509bb75c41cdbc3beab28f92f..8a2d49f210370490946b68d213fb504b74f37384 100644
+index 1979652d7bf433910f5a23da42e3429bbbb30b7c..036baaf94984b1f2088ad5d2415bb523ead40982 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -2286,7 +2286,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -2285,7 +2285,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
      // CraftBukkit start
      @Override
      public boolean isSameThread() {

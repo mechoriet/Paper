@@ -67,10 +67,10 @@ index 2607dc36e0bd7a915afb0cc9e0f453a2b301c0bd..ea724b1781ea256c991fe47aa044183e
  
              this.respawnPosition = pos;
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 932598d92e24521fed11d7236d87f34703b7bdd4..92a3df6d2435d8800a8173e7be3ba11577f23b5a 100644
+index 6d2c9962392a8d6e51abac5db4985c28d795ad53..6b2f241436abf171862fa924199818e059789df3 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -891,7 +891,7 @@ public abstract class PlayerList {
+@@ -890,7 +890,7 @@ public abstract class PlayerList {
                          f1 = (float) Mth.wrapDegrees(Mth.atan2(vec3d1.z, vec3d1.x) * 57.2957763671875D - 90.0D);
                      }
  

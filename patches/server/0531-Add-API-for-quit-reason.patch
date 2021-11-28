@@ -49,10 +49,10 @@ index 2dd47eab63cf9322a5844e748709e220272a8cfe..c0a685cfe62aeda3583763ecc1e4fa12
              this.connection.disconnect(ichatbasecomponent);
          });
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 5c829538a008f1a737380627f7b88c7a0914050f..d414a3abae7dea5b813e41758eccf98cd35bddc2 100644
+index 24801c45268ecdb6182ac17425265a561c3798ff..06b5c713a5a44722a064d1919eefb24184a3dbef 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -596,7 +596,7 @@ public abstract class PlayerList {
+@@ -595,7 +595,7 @@ public abstract class PlayerList {
              entityplayer.closeContainer(org.bukkit.event.inventory.InventoryCloseEvent.Reason.DISCONNECT); // Paper
          }
  

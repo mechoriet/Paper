@@ -5,10 +5,10 @@ Subject: [PATCH] Spawn player in correct world on login
 
 
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index a40ca089d92df8f3ea0a444e3293531e787b196b..ed4e13528cf0fe48384efcb3f55cb5149f4cf681 100644
+index 5ce563465e08095b808aca2332012131b4562006..a68c040166013b8b1e8661128e4b52bf297da15d 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -196,7 +196,18 @@ public abstract class PlayerList {
+@@ -195,7 +195,18 @@ public abstract class PlayerList {
          }String lastKnownName = s; // Paper
          // CraftBukkit end
  

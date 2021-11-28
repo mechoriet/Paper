@@ -5,10 +5,10 @@ Subject: [PATCH] Limit item frame cursors on maps
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-index cc4c067ad70375f76ddede403b88e76f3c8f37da..7d79d4caa299961fd5c54ae924d7658ad37d464b 100644
+index b4f9dcb8e873f74938fc739c997629c41d37e6c2..593d28e2e9635947323fb056d19e3a34cc4fc60b 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-@@ -791,4 +791,9 @@ public class PaperWorldConfig {
+@@ -792,4 +792,9 @@ public class PaperWorldConfig {
      private void allowUsingSignsInsideSpawnProtection() {
          allowUsingSignsInsideSpawnProtection = getBoolean("allow-using-signs-inside-spawn-protection", allowUsingSignsInsideSpawnProtection);
      }

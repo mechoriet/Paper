@@ -29,10 +29,10 @@ index 80d19af2ad423bd3de0e039c5bb8f97af536aaa9..a828cad27fcd39f8bfbaefa97052a2a3
      public static DamageSource sting(LivingEntity attacker) {
          return new EntityDamageSource("sting", attacker);
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 44c2820a33ed40b4ef2ebd20708347d3cc2437ae..b6f8e94df86c174569ccbc69cfd031cc08271dd3 100644
+index e1e986f15cc04e31b98221e3a873df8770e6ce43..7bd75466e37f848e56a7d5e8176e6b16c0baeb53 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -1215,7 +1215,7 @@ public abstract class Player extends LivingEntity {
+@@ -1213,7 +1213,7 @@ public abstract class Player extends LivingEntity {
                          flag1 = true;
                      }
  
@@ -41,7 +41,7 @@ index 44c2820a33ed40b4ef2ebd20708347d3cc2437ae..b6f8e94df86c174569ccbc69cfd031cc
  
                      flag2 = flag2 && !level.paperConfig.disablePlayerCrits; // Paper
                      flag2 = flag2 && !this.isSprinting();
-@@ -1255,7 +1255,7 @@ public abstract class Player extends LivingEntity {
+@@ -1253,7 +1253,7 @@ public abstract class Player extends LivingEntity {
                      }
  
                      Vec3 vec3d = target.getDeltaMovement();
@@ -50,7 +50,7 @@ index 44c2820a33ed40b4ef2ebd20708347d3cc2437ae..b6f8e94df86c174569ccbc69cfd031cc
  
                      if (flag5) {
                          if (i > 0) {
-@@ -1283,7 +1283,7 @@ public abstract class Player extends LivingEntity {
+@@ -1281,7 +1281,7 @@ public abstract class Player extends LivingEntity {
  
                                  if (entityliving != this && entityliving != target && !this.isAlliedTo((Entity) entityliving) && (!(entityliving instanceof ArmorStand) || !((ArmorStand) entityliving).isMarker()) && this.distanceToSqr((Entity) entityliving) < 9.0D) {
                                      // CraftBukkit start - Only apply knockback if the damage hits

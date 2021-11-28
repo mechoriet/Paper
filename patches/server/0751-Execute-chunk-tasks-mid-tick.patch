@@ -19,10 +19,10 @@ index b27021a42cbed3f0648a8d0903d00d03922ae221..eada966d7f108a6081be7a848f5c1dfc
  
      private MinecraftTimings() {}
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index ad92755203d62bb76d259d4c1eba960c04d90a1e..743dd0253e9dffddee28c142d8b5ebdc2a8e670a 100644
+index 613267635f06357e6cd55d557ce8d536e638d78a..f58bc208d9729c4e4e7e298281f8dbd2325e0c86 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -331,6 +331,76 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -330,6 +330,76 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          return s0;
      }
  
@@ -99,7 +99,7 @@ index ad92755203d62bb76d259d4c1eba960c04d90a1e..743dd0253e9dffddee28c142d8b5ebdc
      public MinecraftServer(OptionSet options, DataPackConfig datapackconfiguration, Thread thread, RegistryAccess.RegistryHolder iregistrycustom_dimension, LevelStorageSource.LevelStorageAccess convertable_conversionsession, WorldData savedata, PackRepository resourcepackrepository, Proxy proxy, DataFixer datafixer, ServerResources datapackresources, @Nullable MinecraftSessionService minecraftsessionservice, @Nullable GameProfileRepository gameprofilerepository, @Nullable GameProfileCache usercache, ChunkProgressListenerFactory worldloadlistenerfactory) {
          super("Server");
          SERVER = this; // Paper - better singleton
-@@ -1311,6 +1381,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1310,6 +1380,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
  
      private boolean pollTaskInternal() {
          if (super.pollTask()) {

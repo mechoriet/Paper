@@ -52,10 +52,10 @@ index cdb0eb8e21299ca70ed7ed5c1195d07f44e47838..6d59a813aa752b4233dbe1894cfc8273
      // CraftBukkit end
      public PlayerNaturallySpawnCreaturesEvent playerNaturallySpawnedEvent; // Paper
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 7889f6bb645694b715eb832eb0675f79d80f09e8..792e2a4407dfcee691f53f1bc1342da2c2cebbb4 100644
+index 89839f3727d67b80a55b9db1f17affcdcacc61ab..b70cbcdc9dfbeb8a8340872f04d7eec0c66ac86b 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -276,6 +276,12 @@ public abstract class PlayerList {
+@@ -275,6 +275,12 @@ public abstract class PlayerList {
          this.playersByUUID.put(player.getUUID(), player);
          // this.broadcastAll(new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER, new EntityPlayer[]{entityplayer})); // CraftBukkit - replaced with loop below
  
@@ -68,7 +68,7 @@ index 7889f6bb645694b715eb832eb0675f79d80f09e8..792e2a4407dfcee691f53f1bc1342da2
          // CraftBukkit start
          CraftPlayer bukkitPlayer = player.getBukkitEntity();
  
-@@ -316,6 +322,8 @@ public abstract class PlayerList {
+@@ -315,6 +321,8 @@ public abstract class PlayerList {
              player.connection.send(new ClientboundPlayerInfoPacket(ClientboundPlayerInfoPacket.Action.ADD_PLAYER, new ServerPlayer[]{entityplayer1}));
          }
          player.sentListPacket = true;
@@ -77,7 +77,7 @@ index 7889f6bb645694b715eb832eb0675f79d80f09e8..792e2a4407dfcee691f53f1bc1342da2
          // CraftBukkit end
  
          player.connection.send(new ClientboundSetEntityDataPacket(player.getId(), player.getEntityData(), true)); // CraftBukkit - BungeeCord#2321, send complete data to self on spawn
-@@ -341,6 +349,11 @@ public abstract class PlayerList {
+@@ -340,6 +348,11 @@ public abstract class PlayerList {
              playerconnection.send(new ClientboundUpdateMobEffectPacket(player.getId(), mobeffect));
          }
  
@@ -89,7 +89,7 @@ index 7889f6bb645694b715eb832eb0675f79d80f09e8..792e2a4407dfcee691f53f1bc1342da2
          if (nbttagcompound != null && nbttagcompound.contains("RootVehicle", 10)) {
              CompoundTag nbttagcompound1 = nbttagcompound.getCompound("RootVehicle");
              // CraftBukkit start
-@@ -389,6 +402,10 @@ public abstract class PlayerList {
+@@ -388,6 +401,10 @@ public abstract class PlayerList {
              }
          }
  
@@ -100,7 +100,7 @@ index 7889f6bb645694b715eb832eb0675f79d80f09e8..792e2a4407dfcee691f53f1bc1342da2
          player.initInventoryMenu();
          // CraftBukkit - Moved from above, added world
          // Paper start - Add to collideRule team if needed
-@@ -398,6 +415,7 @@ public abstract class PlayerList {
+@@ -397,6 +414,7 @@ public abstract class PlayerList {
              scoreboard.addPlayerToTeam(player.getScoreboardName(), collideRuleTeam);
          }
          // Paper end

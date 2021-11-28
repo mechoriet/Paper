@@ -39,10 +39,10 @@ index d66c9c09ae3874dd53ef298f94a0e5c6177f2b35..43cd0b67f31d0340893672c9bf5a0046
              this.server.getPlayerList().broadcastMessage(PaperAdventure.asVanilla(quitMessage), ChatType.SYSTEM, Util.NIL_UUID);
              // Paper end
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 13f68b8d241a0b2532a1bd9d9554d2e615780383..932598d92e24521fed11d7236d87f34703b7bdd4 100644
+index 15cba73b902c03c6a70199fb79591ade8fbbe666..6d2c9962392a8d6e51abac5db4985c28d795ad53 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -587,6 +587,11 @@ public abstract class PlayerList {
+@@ -586,6 +586,11 @@ public abstract class PlayerList {
      }
  
      public net.kyori.adventure.text.Component remove(ServerPlayer entityplayer) { // Paper - return Component
@@ -54,7 +54,7 @@ index 13f68b8d241a0b2532a1bd9d9554d2e615780383..932598d92e24521fed11d7236d87f347
          ServerLevel worldserver = entityplayer.getLevel();
  
          entityplayer.awardStat(Stats.LEAVE_GAME);
-@@ -597,7 +602,7 @@ public abstract class PlayerList {
+@@ -596,7 +601,7 @@ public abstract class PlayerList {
              entityplayer.closeContainer(org.bukkit.event.inventory.InventoryCloseEvent.Reason.DISCONNECT); // Paper
          }
  

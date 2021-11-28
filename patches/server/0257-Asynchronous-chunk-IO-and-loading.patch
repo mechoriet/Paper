@@ -2291,10 +2291,10 @@ index 4ab820c43ddc79f5a280e2d4b322a667b9ba725f..e0c1e4e38ff49429a587c59afb86e95c
                  DedicatedServer dedicatedserver1 = new DedicatedServer(optionset, datapackconfiguration1, thread, iregistrycustom_dimension, convertable_conversionsession, resourcepackrepository, datapackresources, null, dedicatedserversettings, DataFixers.getDataFixer(), minecraftsessionservice, gameprofilerepository, usercache, LoggerChunkProgressListener::new);
  
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 746d8eb657808bfaa92654c36093abd9b67a0288..3380aca80bdda5edf8809f6fe36eaf5ba40a68ae 100644
+index 74a3543c52560f7eba9cc1ec97082a02e55010c1..be8d58e761ed963f7ddb45114ecd04a665aa309b 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -984,7 +984,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -983,7 +983,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              this.getProfileCache().save(false); // Paper
          }
          // Spigot end
@@ -2304,7 +2304,7 @@ index 746d8eb657808bfaa92654c36093abd9b67a0288..3380aca80bdda5edf8809f6fe36eaf5b
  
      public String getLocalIp() {
 diff --git a/src/main/java/net/minecraft/server/level/ChunkHolder.java b/src/main/java/net/minecraft/server/level/ChunkHolder.java
-index b3ac5e2932f4b3de812b0c34655028d6adc36195..e01804a46ea268c7cd7bb01ec55b473d65dcb59e 100644
+index 45de5e508540b4ba622985d530f1aadaa7eb4535..5b8b9dabc6673b6f0a335a42d2ec71a583c410fb 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkHolder.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkHolder.java
 @@ -412,7 +412,7 @@ public class ChunkHolder {

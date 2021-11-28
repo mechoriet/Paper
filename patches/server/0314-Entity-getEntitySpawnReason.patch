@@ -22,10 +22,10 @@ index 3f6634056fe00ee47e6b33deee97d67bd9dfa6fb..cd2dd257126a207b0ccf7e94bc71c5a5
              // Paper start
              if (DEBUG_ENTITIES) {
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 601eb789e19efe4a2fa697c0b5e7c28b245f0990..de713d1c41642ff6d9e992981252c91f23fb19b6 100644
+index 81d442a15203c1d3ca3963fd49934fdfa8b5f071..b89532ce32bb2ab9092ed96a36c1c2b7b9dc8acc 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
-@@ -342,7 +342,7 @@ public abstract class PlayerList {
+@@ -341,7 +341,7 @@ public abstract class PlayerList {
              // CraftBukkit start
              ServerLevel finalWorldServer = worldserver1;
              Entity entity = EntityType.loadEntityRecursive(nbttagcompound1.getCompound("Entity"), finalWorldServer, (entity1) -> {

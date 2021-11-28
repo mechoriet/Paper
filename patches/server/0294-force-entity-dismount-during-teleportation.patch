@@ -114,10 +114,10 @@ index ea3d289a859e5f093600ae40baa043599ba2d704..8bdaf925580480a9467b5611e77580bb
              this.dismountVehicle(entity);
          }
 diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
-index 37b65c7a12b4dc8ff4e9017015abbb86890dbf5e..6927eeb04a9aa1a33666f3655f2bb889bf046dc9 100644
+index e1ddc4e3a57915c5a13e7ae64bc594e62b74c6d3..87d0c361c15cd394dd747ef6ca5e666f31cfa6e1 100644
 --- a/src/main/java/net/minecraft/world/entity/player/Player.java
 +++ b/src/main/java/net/minecraft/world/entity/player/Player.java
-@@ -1094,7 +1094,13 @@ public abstract class Player extends LivingEntity {
+@@ -1092,7 +1092,13 @@ public abstract class Player extends LivingEntity {
  
      @Override
      public void removeVehicle() {
