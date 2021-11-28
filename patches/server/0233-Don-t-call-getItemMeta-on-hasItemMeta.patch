@@ -11,10 +11,10 @@ Returns true if getDamage() == 0 or has damage tag or other tag is set.
 Check the `ItemMetaTest#testTaggedButNotMeta` method to see how this method behaves.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemStack.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemStack.java
-index 967555b6a3ef833ca75215391b20744ab6f04359..14da2997b5fff4434b1fe8d5a1b3109dde143740 100644
+index 032308865afe14e1ac9c2f44284e73728a2c15ac..4be4033a958cbb9b7fe2bf75124f9d0b6cc9df16 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemStack.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemStack.java
-@@ -580,7 +580,7 @@ public final class CraftItemStack extends ItemStack {
+@@ -581,7 +581,7 @@ public final class CraftItemStack extends ItemStack {
  
      @Override
      public boolean hasItemMeta() {

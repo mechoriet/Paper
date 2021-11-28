@@ -256,10 +256,10 @@ index aee796567f11c8b93ac9ec0b8cb8f3a8412b23ce..39b98305632271e7375afe6c7001f241
 +    // Paper end
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index 0baca5f3c3f73323b6f5b283fc00be39477ccf59..ec26116dcaa2b1ba71498323d3b7624aad49dbbf 100644
+index f218c584d7fd10a84e207cb738efff44cfd38d0e..1e00132513d8201dd76be50c2e304c10e3a6de26 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-@@ -1444,6 +1444,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1443,6 +1443,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                          CraftMetaCrossbow.CHARGED.NBT,
                          CraftMetaCrossbow.CHARGED_PROJECTILES.NBT,
                          CraftMetaSuspiciousStew.EFFECTS.NBT,
