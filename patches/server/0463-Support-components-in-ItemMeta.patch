@@ -5,10 +5,10 @@ Subject: [PATCH] Support components in ItemMeta
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index e87397178a85c00cc39329d63ac6ed0122c37744..cadaaf451006c1e8a8afcc16c464f3015d6cf88d 100644
+index 9a3b811d4833a470a7d8d7ac259994366176e156..43b83fd1657609cf9f455eed8a978243cdad3053 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-@@ -873,11 +873,23 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -871,11 +871,23 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          return CraftChatMessage.fromJSONComponent(displayName);
      }
  
@@ -32,7 +32,7 @@ index e87397178a85c00cc39329d63ac6ed0122c37744..cadaaf451006c1e8a8afcc16c464f301
      @Override
      public boolean hasDisplayName() {
          return this.displayName != null;
-@@ -1020,6 +1032,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1018,6 +1030,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          return this.lore == null ? null : new ArrayList<String>(Lists.transform(this.lore, CraftChatMessage::fromJSONComponent));
      }
  
@@ -47,7 +47,7 @@ index e87397178a85c00cc39329d63ac6ed0122c37744..cadaaf451006c1e8a8afcc16c464f301
      @Override
      public void setLore(List<String> lore) {
          if (lore == null || lore.isEmpty()) {
-@@ -1034,6 +1054,21 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1032,6 +1052,21 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          }
      }
  
@@ -69,7 +69,7 @@ index e87397178a85c00cc39329d63ac6ed0122c37744..cadaaf451006c1e8a8afcc16c464f301
      @Override
      public boolean hasCustomModelData() {
          return this.customModelData != null;
-@@ -1494,6 +1529,11 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1492,6 +1527,11 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          }
  
          for (Object object : addFrom) {

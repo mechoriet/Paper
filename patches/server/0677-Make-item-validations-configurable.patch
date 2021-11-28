@@ -56,10 +56,10 @@ index 0f753f4868141ecc383877ea3a666a383f2e3339..ebb643fc0477409d1efb4e9af5967504
          }
      }
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index cadaaf451006c1e8a8afcc16c464f3015d6cf88d..c8b55a307d8e663715b080dabed18776766ab160 100644
+index 43b83fd1657609cf9f455eed8a978243cdad3053..a7e33b421079f149876451a387053192b8daf382 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-@@ -356,18 +356,18 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -354,18 +354,18 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              CompoundTag display = tag.getCompound(DISPLAY.NBT);
  
              if (display.contains(NAME.NBT)) {

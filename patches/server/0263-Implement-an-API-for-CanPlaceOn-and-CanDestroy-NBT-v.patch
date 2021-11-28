@@ -5,10 +5,10 @@ Subject: [PATCH] Implement an API for CanPlaceOn and CanDestroy NBT values
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159f4fa6b3c 100644
+index eb3aff100040ef19e640fc922328db088dda3c7f..42fad1588d0fc377c72db567c24aea1b5beb21e8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-@@ -82,6 +82,12 @@ import org.bukkit.persistence.PersistentDataContainer;
+@@ -80,6 +80,12 @@ import org.bukkit.persistence.PersistentDataContainer;
  import static org.spigotmc.ValidateUtils.*;
  // Spigot end
  
@@ -21,7 +21,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
  /**
   * Children must include the following:
   *
-@@ -267,6 +273,10 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -265,6 +271,10 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      @Specific(Specific.To.NBT)
      static final ItemMetaKey BLOCK_DATA = new ItemMetaKey("BlockStateTag");
      static final ItemMetaKey BUKKIT_CUSTOM_TAG = new ItemMetaKey("PublicBukkitValues");
@@ -32,7 +32,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
  
      // We store the raw original JSON representation of all text data. See SPIGOT-5063, SPIGOT-5656, SPIGOT-5304
      private String displayName;
-@@ -280,6 +290,10 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -278,6 +288,10 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      private int hideFlag;
      private boolean unbreakable;
      private int damage;
@@ -43,7 +43,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
  
      private static final Set<String> HANDLED_TAGS = Sets.newHashSet();
      private static final CraftPersistentDataTypeRegistry DATA_TYPE_REGISTRY = new CraftPersistentDataTypeRegistry();
-@@ -317,6 +331,15 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -315,6 +329,15 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          this.hideFlag = meta.hideFlag;
          this.unbreakable = meta.unbreakable;
          this.damage = meta.damage;
@@ -59,7 +59,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
          this.unhandledTags.putAll(meta.unhandledTags);
          this.persistentDataContainer.putAll(meta.persistentDataContainer.getRaw());
  
-@@ -380,6 +403,31 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -378,6 +401,31 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                  this.persistentDataContainer.put(key, compound.get(key));
              }
          }
@@ -91,7 +91,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
  
          Set<String> keys = tag.getAllKeys();
          for (String key : keys) {
-@@ -518,6 +566,34 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -516,6 +564,34 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              this.setDamage(damage);
          }
  
@@ -126,7 +126,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
          String internal = SerializableMeta.getString(map, "internal", true);
          if (internal != null) {
              ByteArrayInputStream buf = new ByteArrayInputStream(Base64.getDecoder().decode(internal));
-@@ -646,6 +722,23 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -644,6 +720,23 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          if (this.hasDamage()) {
              itemTag.putInt(DAMAGE.NBT, damage);
          }
@@ -150,7 +150,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
  
          for (Map.Entry<String, Tag> e : this.unhandledTags.entrySet()) {
              itemTag.put(e.getKey(), e.getValue());
-@@ -662,6 +755,21 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -660,6 +753,21 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          }
      }
  
@@ -172,7 +172,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
      ListTag createStringList(List<String> list) {
          if (list == null) {
              return null;
-@@ -745,7 +853,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -743,7 +851,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Overridden
      boolean isEmpty() {
@@ -181,7 +181,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
      }
  
      // Paper start
-@@ -1169,7 +1277,11 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1167,7 +1275,11 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                  && (this.hideFlag == that.hideFlag)
                  && (this.isUnbreakable() == that.isUnbreakable())
                  && (this.hasDamage() ? that.hasDamage() && this.damage == that.damage : !that.hasDamage())
@@ -194,7 +194,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
      }
  
      /**
-@@ -1204,6 +1316,10 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1202,6 +1314,10 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          hash = 61 * hash + (this.hasDamage() ? this.damage : 0);
          hash = 61 * hash + (this.hasAttributeModifiers() ? this.attributeModifiers.hashCode() : 0);
          hash = 61 * hash + this.version;
@@ -205,7 +205,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
          return hash;
      }
  
-@@ -1228,6 +1344,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1226,6 +1342,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              clone.unbreakable = this.unbreakable;
              clone.damage = this.damage;
              clone.version = this.version;
@@ -220,7 +220,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
              return clone;
          } catch (CloneNotSupportedException e) {
              throw new Error(e);
-@@ -1285,6 +1409,23 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1283,6 +1407,23 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              builder.put(DAMAGE.BUKKIT, damage);
          }
  
@@ -244,7 +244,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
          final Map<String, Tag> internalTags = new HashMap<String, Tag>(this.unhandledTags);
          this.serializeInternal(internalTags);
          if (!internalTags.isEmpty()) {
-@@ -1450,6 +1591,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1448,6 +1589,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                          CraftMetaArmorStand.SHOW_ARMS.NBT,
                          CraftMetaArmorStand.SMALL.NBT,
                          CraftMetaArmorStand.MARKER.NBT,
@@ -253,7 +253,7 @@ index 1e00132513d8201dd76be50c2e304c10e3a6de26..c29ef48cff19e47b34b0c2938e862159
                          // Paper end
                          CraftMetaCompass.LODESTONE_DIMENSION.NBT,
                          CraftMetaCompass.LODESTONE_POS.NBT,
-@@ -1478,4 +1621,147 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1476,4 +1619,147 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      }
      // Paper end
  
