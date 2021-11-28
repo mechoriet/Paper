@@ -5,10 +5,10 @@ Subject: [PATCH] Added EntityDamageItemEvent
 
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index c5286b3751c58df1b70d9ac01b0497b83c0f917a..8f2f516b1f473ce18a07e9f130b49b795dd6b46e 100644
+index 37cc6db250e31f2ce9bfa63b841f2a8febe61156..48a71964cca00624702401eab8a4f24be1be8d6d 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
-@@ -527,7 +527,7 @@ public final class ItemStack {
+@@ -525,7 +525,7 @@ public final class ItemStack {
          return this.getItem().getMaxDamage();
      }
  
@@ -17,7 +17,7 @@ index c5286b3751c58df1b70d9ac01b0497b83c0f917a..8f2f516b1f473ce18a07e9f130b49b79
          if (!this.isDamageableItem()) {
              return false;
          } else {
-@@ -545,8 +545,8 @@ public final class ItemStack {
+@@ -543,8 +543,8 @@ public final class ItemStack {
  
                  amount -= k;
                  // CraftBukkit start
@@ -28,7 +28,7 @@ index c5286b3751c58df1b70d9ac01b0497b83c0f917a..8f2f516b1f473ce18a07e9f130b49b79
                      event.getPlayer().getServer().getPluginManager().callEvent(event);
  
                      if (amount != event.getDamage() || event.isCancelled()) {
-@@ -557,6 +557,14 @@ public final class ItemStack {
+@@ -555,6 +555,14 @@ public final class ItemStack {
                      }
  
                      amount = event.getDamage();
@@ -43,7 +43,7 @@ index c5286b3751c58df1b70d9ac01b0497b83c0f917a..8f2f516b1f473ce18a07e9f130b49b79
                  }
                  // CraftBukkit end
                  if (amount <= 0) {
-@@ -564,8 +572,8 @@ public final class ItemStack {
+@@ -562,8 +570,8 @@ public final class ItemStack {
                  }
              }
  
@@ -54,7 +54,7 @@ index c5286b3751c58df1b70d9ac01b0497b83c0f917a..8f2f516b1f473ce18a07e9f130b49b79
              }
  
              j = this.getDamageValue() + amount;
-@@ -577,7 +585,7 @@ public final class ItemStack {
+@@ -575,7 +583,7 @@ public final class ItemStack {
      public <T extends LivingEntity> void hurtAndBreak(int amount, T entity, Consumer<T> breakCallback) {
          if (!entity.level.isClientSide && (!(entity instanceof net.minecraft.world.entity.player.Player) || !((net.minecraft.world.entity.player.Player) entity).getAbilities().instabuild)) {
              if (this.isDamageableItem()) {

@@ -53,10 +53,10 @@ index 6914ab77fc868844c391ac41ba2d344a26012208..00f783aafd81fa7e836e4eea5bfeac74
  
      public synchronized void add(GameProfile profile) { // Paper - synchronize
 diff --git a/src/main/java/net/minecraft/server/players/OldUsersConverter.java b/src/main/java/net/minecraft/server/players/OldUsersConverter.java
-index 876658b685ea09adb4c01d436da56daadb7eedaa..5445cb5910ec63408dc4379eec5e12d305182527 100644
+index 1b9a996625d514d99d887fbe1333544040d54d3a..df75c0a5716533bc0298dc454f9089a5c0c7e3ba 100644
 --- a/src/main/java/net/minecraft/server/players/OldUsersConverter.java
 +++ b/src/main/java/net/minecraft/server/players/OldUsersConverter.java
-@@ -66,7 +66,8 @@ public class OldUsersConverter {
+@@ -65,7 +65,8 @@ public class OldUsersConverter {
              return new String[i];
          });
  

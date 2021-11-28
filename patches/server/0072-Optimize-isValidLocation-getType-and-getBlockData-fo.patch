@@ -90,10 +90,10 @@ index ef74f37cae96e61d5648fce7bbd793fb67ba9e4a..7c5b3acd299c5b021bd20f17ff0b89c8
      @Override
      public FluidState getFluidState(BlockPos pos) {
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 3bfc47869ad378ae2c1e506fd6af479353689507..e305f2839b1bea2a3c1938542c1157b0179aa4bc 100644
+index 2c02c37c4de69d16f12d50f7d4ab8a81f0e15a5a..c3aa781a4f4dddb9f075a8ec70030a51b91b7ede 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -287,12 +287,28 @@ public class LevelChunk extends ChunkAccess {
+@@ -286,12 +286,28 @@ public class LevelChunk extends ChunkAccess {
          });
      }
  

@@ -5,10 +5,10 @@ Subject: [PATCH] Introduce beacon activation/deactivation events
 
 
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/BeaconBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/BeaconBlockEntity.java
-index 008d486f4166d9f384e3aab48af6d66a255f3564..423560afba1bc03c0bb2b7d5d028451f34e59ec5 100644
+index 17b78c62a9c503d82795b293e3535d241b3e8427..8ce6b372051da159346420500af613d1356b9695 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/BeaconBlockEntity.java
 +++ b/src/main/java/net/minecraft/world/level/block/entity/BeaconBlockEntity.java
-@@ -205,6 +205,15 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider {
+@@ -201,6 +201,15 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider {
                  BeaconBlockEntity.playSound(world, pos, SoundEvents.BEACON_AMBIENT);
              }
          }
@@ -24,7 +24,7 @@ index 008d486f4166d9f384e3aab48af6d66a255f3564..423560afba1bc03c0bb2b7d5d028451f
  
          if (blockEntity.lastCheckY >= l) {
              blockEntity.lastCheckY = world.getMinBuildHeight() - 1;
-@@ -262,6 +271,10 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider {
+@@ -258,6 +267,10 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider {
  
      @Override
      public void setRemoved() {

@@ -4946,10 +4946,10 @@ index 7c5b3acd299c5b021bd20f17ff0b89c8208a6623..d29739c3a67e60741a06fb25bcaf7705
          super(wrapped.getPos(), UpgradeData.EMPTY, wrapped.levelHeightAccessor, wrapped.getLevel().registryAccess().registryOrThrow(Registry.BIOME_REGISTRY), wrapped.getBlendingData());
          this.wrapped = wrapped;
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 376099c21d9e0ddeeeac28a7c3c21200c657404b..5ade22df6f8a2b839f494ab0898a87c3b7cd4e63 100644
+index 033051de0fe335a5a826c6ab2730fcd1ab32f8d5..925b600b86d25e594624a9a4828d218dcdc39121 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -100,6 +100,10 @@ public class LevelChunk extends ChunkAccess {
+@@ -99,6 +99,10 @@ public class LevelChunk extends ChunkAccess {
  
      public LevelChunk(Level world, ChunkPos pos, UpgradeData upgradeData, LevelChunkTicks<Block> blockTickScheduler, LevelChunkTicks<Fluid> fluidTickScheduler, long inhabitedTime, @Nullable LevelChunkSection[] sectionArrayInitializer, @Nullable LevelChunk.PostLoadProcessor entityLoader, @Nullable BlendingData blendingData) {
          super(pos, upgradeData, world, world.registryAccess().registryOrThrow(Registry.BIOME_REGISTRY), inhabitedTime, sectionArrayInitializer, blendingData);
@@ -4960,7 +4960,7 @@ index 376099c21d9e0ddeeeac28a7c3c21200c657404b..5ade22df6f8a2b839f494ab0898a87c3
          this.tickersInLevel = Maps.newHashMap();
          this.clientLightReady = false;
          this.level = (ServerLevel) world; // CraftBukkit - type
-@@ -327,6 +331,12 @@ public class LevelChunk extends ChunkAccess {
+@@ -326,6 +330,12 @@ public class LevelChunk extends ChunkAccess {
  
      public LevelChunk(ServerLevel world, ProtoChunk protoChunk, @Nullable LevelChunk.PostLoadProcessor entityLoader) {
          this(world, protoChunk.getPos(), protoChunk.getUpgradeData(), protoChunk.unpackBlockTicks(), protoChunk.unpackFluidTicks(), protoChunk.getInhabitedTime(), protoChunk.getSections(), entityLoader, protoChunk.getBlendingData());

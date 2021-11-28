@@ -19,10 +19,10 @@ index d7734fbc6b684b14bc32c94e65947fb41aae126a..80345730b8ccc11d3d0833485d25b03f
 +    }
  }
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 5ff0475c08fe3e1a48358ddbf112345a985caad7..2cc323734a49d82104046f4f02eb224458c151b4 100644
+index 468fee12ecf54cb7638ef80ac4368d4347d92ff0..50f6091f184b4e00e7a168b23365f9f59cdbee76 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -261,7 +261,7 @@ public class LevelChunk extends ChunkAccess {
+@@ -260,7 +260,7 @@ public class LevelChunk extends ChunkAccess {
          }
  
          this.setLightCorrect(protoChunk.isLightCorrect());
@@ -31,7 +31,7 @@ index 5ff0475c08fe3e1a48358ddbf112345a985caad7..2cc323734a49d82104046f4f02eb2244
          this.needsDecoration = true; // CraftBukkit
      }
  
-@@ -580,6 +580,12 @@ public class LevelChunk extends ChunkAccess {
+@@ -579,6 +579,12 @@ public class LevelChunk extends ChunkAccess {
                      "Chunk coordinates: " + (this.chunkPos.x * 16) + "," + (this.chunkPos.z * 16));
              e.printStackTrace();
              ServerInternalException.reportInternalException(e);

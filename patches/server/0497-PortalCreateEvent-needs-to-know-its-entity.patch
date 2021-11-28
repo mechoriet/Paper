@@ -5,10 +5,10 @@ Subject: [PATCH] PortalCreateEvent needs to know its entity
 
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index 31439467f1730d96712e53a8e27892dfce017c70..c5286b3751c58df1b70d9ac01b0497b83c0f917a 100644
+index 4b29860aadf59d8b82a47e042df60063001106e6..37cc6db250e31f2ce9bfa63b841f2a8febe61156 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
-@@ -411,7 +411,7 @@ public final class ItemStack {
+@@ -409,7 +409,7 @@ public final class ItemStack {
                          net.minecraft.world.level.block.state.BlockState block = world.getBlockState(newblockposition);
  
                          if (!(block.getBlock() instanceof BaseEntityBlock)) { // Containers get placed automatically

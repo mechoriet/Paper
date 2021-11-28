@@ -311,10 +311,10 @@ index 9842e4d39130f45481b643df38ee4b25076c5c08..4a77494ddb94d5fd2d82665c6bd4e513
              final String msg = String.format("Entity threw exception at %s:%s,%s,%s", entity.level.getWorld().getName(), entity.getX(), entity.getY(), entity.getZ());
              MinecraftServer.LOGGER.error(msg, throwable);
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 1df4ddab06b6065464302bdc0e4eb0950964fa84..b92da719a5d35a60a2e13ccb0f55c41b242f9b50 100644
+index cdbc1272b7e9a0b966821eafc5e82cd95d449981..9d67e15e7f168a503ced41ae95cdf5c4f4e7417c 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -1068,6 +1068,7 @@ public class LevelChunk extends ChunkAccess {
+@@ -1067,6 +1067,7 @@ public class LevelChunk extends ChunkAccess {
  
                          gameprofilerfiller.pop();
                      } catch (Throwable throwable) {

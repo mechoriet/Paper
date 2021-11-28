@@ -80,7 +80,7 @@ index 2fe519d4059fac06781c30e140895b604e13104f..35949e9c15eb998aa89842d34d0999cd
                  chunkData.addProperty("queued-for-unload", chunkMap.toDrop.contains(playerChunk.pos.longKey));
                  chunkData.addProperty("status", status == null ? "unloaded" : status.toString());
 diff --git a/src/main/java/net/minecraft/server/level/ChunkHolder.java b/src/main/java/net/minecraft/server/level/ChunkHolder.java
-index 9c58274f680c1f873b7832d2175d1d449544bff1..26cafbffd6820411df6b9c41bd295883e1090c40 100644
+index 35ff6e3b796068a6dd4a422a0106747eadacfa5a..272a5242e485976f9fcf4f93837133785a45d9ce 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkHolder.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkHolder.java
 @@ -57,7 +57,7 @@ public class ChunkHolder {
@@ -711,7 +711,7 @@ index 84dc1e94b4f7b8315d8422634dd49b1f85044d18..451d5e9b5906e662a0c2e04b407068ea
          Ticket<ChunkPos> ticket = new Ticket<>(TicketType.FORCED, 31, pos);
          long i = pos.toLong();
 diff --git a/src/main/java/net/minecraft/server/level/ServerChunkCache.java b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
-index 3f9366019d19f8fb5f636f1b301c2824a54865cd..58c22ed8e37b22b3b304139b1746b5bc8ba6f45a 100644
+index f9caa9524ebf0e1f073f23e97c84095b25a30023..2d309b761eff5f1206bb5c21485151644fde1044 100644
 --- a/src/main/java/net/minecraft/server/level/ServerChunkCache.java
 +++ b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
 @@ -601,6 +601,26 @@ public class ServerChunkCache extends ChunkSource {
@@ -1164,10 +1164,10 @@ index fb2d5c768b7dc5255db7dc7199ed750809a8fb94..9b254d00eb0cf0c4d4fe73e7a955b0b6
      public float yRotO;
      public float xRotO;
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 6a881c2abdbc23366a1b0ac69e363b196b99197b..ddf362fc14fcf83b22536b76cfc6ac1387b4c57a 100644
+index 7d061d79a47d095fb1e496345e8594d9e5d5d5f9..7b6ce3a0bab9bbf67e0034318002b24e438f788e 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -143,7 +143,7 @@ public class LevelChunk extends ChunkAccess {
+@@ -142,7 +142,7 @@ public class LevelChunk extends ChunkAccess {
          return NEIGHBOUR_CACHE_RADIUS;
      }
  
@@ -1176,7 +1176,7 @@ index 6a881c2abdbc23366a1b0ac69e363b196b99197b..ddf362fc14fcf83b22536b76cfc6ac13
      private long neighbourChunksLoadedBitset;
      private final LevelChunk[] loadedNeighbourChunks = new LevelChunk[(NEIGHBOUR_CACHE_RADIUS * 2 + 1) * (NEIGHBOUR_CACHE_RADIUS * 2 + 1)];
  
-@@ -681,6 +681,7 @@ public class LevelChunk extends ChunkAccess {
+@@ -680,6 +680,7 @@ public class LevelChunk extends ChunkAccess {
  
      // CraftBukkit start
      public void loadCallback() {
@@ -1184,7 +1184,7 @@ index 6a881c2abdbc23366a1b0ac69e363b196b99197b..ddf362fc14fcf83b22536b76cfc6ac13
          // Paper start - neighbour cache
          int chunkX = this.chunkPos.x;
          int chunkZ = this.chunkPos.z;
-@@ -735,6 +736,7 @@ public class LevelChunk extends ChunkAccess {
+@@ -734,6 +735,7 @@ public class LevelChunk extends ChunkAccess {
      }
  
      public void unloadCallback() {

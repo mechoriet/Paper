@@ -47,10 +47,10 @@ index c6409dfa739f0056484e70d2be4cd448e868d6bb..e31eab1baaa77dfb6a3e804481d91b91
              this.profiler.push(() -> {
                  return worldserver + " " + worldserver.dimension().location();
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index b8b77a3c8aa3feb433bd232d0f60867bfcae530d..57a9106005413e6767f0fe291c463742ba9afb21 100644
+index cb000c57fd14b7bed63ce379a5b04f6f720928cd..bbd6c24cf611a29b12f82864ddbf2eb170b395c5 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
-@@ -605,11 +605,12 @@ public final class ItemStack {
+@@ -603,11 +603,12 @@ public final class ItemStack {
          return this.getItem().interactLivingEntity(this, user, entity, hand);
      }
  

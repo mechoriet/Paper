@@ -309,10 +309,10 @@ index 928025438af179711c42381fc3eaeac74cd20c59..c48d0773e7f1af4bc247d777eccc8a42
  
      private static Boolean isValidSpawnPostitionForType(ServerLevel world, MobCategory group, StructureFeatureManager structureAccessor, ChunkGenerator chunkGenerator, MobSpawnSettings.SpawnerData spawnEntry, BlockPos.MutableBlockPos pos, double squaredDistance) { // Paper
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 9c33c0b10e8854822605c65cde54b93747bf629d..376099c21d9e0ddeeeac28a7c3c21200c657404b 100644
+index 7b6ce3a0bab9bbf67e0034318002b24e438f788e..033051de0fe335a5a826c6ab2730fcd1ab32f8d5 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -237,6 +237,93 @@ public class LevelChunk extends ChunkAccess {
+@@ -236,6 +236,93 @@ public class LevelChunk extends ChunkAccess {
          }
      }
      // Paper end
