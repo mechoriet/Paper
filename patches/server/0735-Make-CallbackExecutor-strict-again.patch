@@ -10,10 +10,10 @@ schedules. Effectively, use the callback executor as a tool of
 finding issues rather than hiding these issues.
 
 diff --git a/src/main/java/net/minecraft/server/level/ChunkMap.java b/src/main/java/net/minecraft/server/level/ChunkMap.java
-index d9f6d47629f2f4aa1db5a19b8cb7229a0905b75e..dec387e56928fa9b07a183e3055489dfe3dd94fe 100644
+index 56f75dd85b7490eab024d46a04ed980a5c02a9cf..4910f5c94ee07715d507acaec839bb0b0fec3739 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkMap.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkMap.java
-@@ -160,17 +160,28 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
+@@ -159,17 +159,28 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
      public final CallbackExecutor callbackExecutor = new CallbackExecutor();
      public static final class CallbackExecutor implements java.util.concurrent.Executor, Runnable {
  

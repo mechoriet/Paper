@@ -5,10 +5,10 @@ Subject: [PATCH] Added ServerResourcesReloadedEvent
 
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 3758b2eb39c7ff1ad51ab7584ce0313ff28a9fa1..0df39d3bfa902834fcb98f25e28558ba8763bc38 100644
+index 97e14f94ad315d4dd605d9b7440041152f1cdb9f..8274aadd144724b4e3a8445dea8107239b72bb87 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1957,7 +1957,13 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1956,7 +1956,13 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          return this.functionManager;
      }
  
@@ -22,7 +22,7 @@ index 3758b2eb39c7ff1ad51ab7584ce0313ff28a9fa1..0df39d3bfa902834fcb98f25e28558ba
          CompletableFuture<Void> completablefuture = CompletableFuture.supplyAsync(() -> {
              Stream<String> stream = datapacks.stream(); // CraftBukkit - decompile error
              PackRepository resourcepackrepository = this.packRepository;
-@@ -1973,6 +1979,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1972,6 +1978,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              this.packRepository.setSelected(datapacks);
              this.worldData.setDataPackConfig(MinecraftServer.getSelectedPacks(this.packRepository));
              datapackresources.updateGlobals();

@@ -5,7 +5,7 @@ Subject: [PATCH] forced whitelist: use configurable kick message
 
 
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 5841410185e82cb3f3df8866155d12471b496b94..649be9397ed38a973e11347d6840453d9ae20ec6 100644
+index 671c9d75292e85968618ad0815a09dc96277e73f..1c044fa5e02cce5c6b8c0f4d3368f43d047c7453 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -73,7 +73,6 @@ import net.minecraft.nbt.NbtOps;
@@ -16,7 +16,7 @@ index 5841410185e82cb3f3df8866155d12471b496b94..649be9397ed38a973e11347d6840453d
  import net.minecraft.network.protocol.game.ClientboundChangeDifficultyPacket;
  import net.minecraft.network.protocol.game.ClientboundSetTimePacket;
  import net.minecraft.network.protocol.status.ServerStatus;
-@@ -2060,7 +2059,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -2059,7 +2058,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
                  ServerPlayer entityplayer = (ServerPlayer) iterator.next();
  
                  if (!whitelist.isWhiteListed(entityplayer.getGameProfile()) && !this.getPlayerList().isOp(entityplayer.getGameProfile())) { // Paper - Fix kicking ops when whitelist is reloaded (MC-171420)

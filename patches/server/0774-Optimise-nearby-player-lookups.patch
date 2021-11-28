@@ -26,10 +26,10 @@ index 454018b973bde7131353d23920a1e65693b04a65..fe618afd578e4b2af6a0879e84f2b109
      // Paper end - optimise isOutsideOfRange
      long lastAutoSaveTime; // Paper - incremental autosave
 diff --git a/src/main/java/net/minecraft/server/level/ChunkMap.java b/src/main/java/net/minecraft/server/level/ChunkMap.java
-index bf87cbe80a5119fd06b108722d3968c72c41fe2a..f6d5bf3474dbf37095778cd8d774b58338d53877 100644
+index 575235600010eeb5df58c3eeae1dcf7af849d2e8..f5a6609aabdfd9c7a51c26ab3e8de092cf77bbe4 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkMap.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkMap.java
-@@ -159,6 +159,13 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
+@@ -158,6 +158,13 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
      int viewDistance;
      public final com.destroystokyo.paper.util.PlayerMobDistanceMap playerMobDistanceMap; // Paper
  
@@ -43,7 +43,7 @@ index bf87cbe80a5119fd06b108722d3968c72c41fe2a..f6d5bf3474dbf37095778cd8d774b583
      // CraftBukkit start - recursion-safe executor for Chunk loadCallback() and unloadCallback()
      public final CallbackExecutor callbackExecutor = new CallbackExecutor();
      public static final class CallbackExecutor implements java.util.concurrent.Executor, Runnable {
-@@ -239,6 +246,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
+@@ -238,6 +245,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
          this.playerChunkTickRangeMap.update(player, chunkX, chunkZ, DistanceManager.MOB_SPAWN_RANGE);
          this.playerChunkTickRangeMap.add(player, chunkX, chunkZ, DistanceManager.MOB_SPAWN_RANGE);
          // Paper end - optimise PlayerChunkMap#isOutsideRange
@@ -51,7 +51,7 @@ index bf87cbe80a5119fd06b108722d3968c72c41fe2a..f6d5bf3474dbf37095778cd8d774b583
      }
  
      void removePlayerFromDistanceMaps(ServerPlayer player) {
-@@ -251,6 +259,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
+@@ -250,6 +258,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
          this.playerMobSpawnMap.remove(player);
          this.playerChunkTickRangeMap.remove(player);
          // Paper end - optimise PlayerChunkMap#isOutsideRange
@@ -59,7 +59,7 @@ index bf87cbe80a5119fd06b108722d3968c72c41fe2a..f6d5bf3474dbf37095778cd8d774b583
      }
  
      void updateMaps(ServerPlayer player) {
-@@ -266,6 +275,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
+@@ -265,6 +274,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
          }
          // Paper end - use distance map to optimise entity tracker
          this.playerChunkTickRangeMap.update(player, chunkX, chunkZ, DistanceManager.MOB_SPAWN_RANGE); // Paper - optimise PlayerChunkMap#isOutsideRange
@@ -67,7 +67,7 @@ index bf87cbe80a5119fd06b108722d3968c72c41fe2a..f6d5bf3474dbf37095778cd8d774b583
      }
      // Paper end
      // Paper start
-@@ -421,6 +431,23 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
+@@ -420,6 +430,23 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
                  }
              });
          // Paper end - optimise PlayerChunkMap#isOutsideRange
@@ -309,7 +309,7 @@ index 928025438af179711c42381fc3eaeac74cd20c59..c48d0773e7f1af4bc247d777eccc8a42
  
      private static Boolean isValidSpawnPostitionForType(ServerLevel world, MobCategory group, StructureFeatureManager structureAccessor, ChunkGenerator chunkGenerator, MobSpawnSettings.SpawnerData spawnEntry, BlockPos.MutableBlockPos pos, double squaredDistance) { // Paper
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 7b6ce3a0bab9bbf67e0034318002b24e438f788e..033051de0fe335a5a826c6ab2730fcd1ab32f8d5 100644
+index f1ab25b5f66f9187139e9f31de0b17d3988901ef..265619981a81ea1f3556702fe5aba99800af963b 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -236,6 +236,93 @@ public class LevelChunk extends ChunkAccess {

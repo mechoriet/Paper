@@ -4418,10 +4418,10 @@ index fe618afd578e4b2af6a0879e84f2b10985dbf639..31592058edcb27ba1557efcdd2eec7b8
      private final DebugBuffer<ChunkHolder.ChunkSaveDebug> chunkToSaveHistory;
      public int oldTicketLevel;
 diff --git a/src/main/java/net/minecraft/server/level/ChunkMap.java b/src/main/java/net/minecraft/server/level/ChunkMap.java
-index 7c4154b1b5ccc53af5f5fb186c2a5d1ff88c7af1..cf6f5388e171035a22e9c35c9dd5d75d147562a4 100644
+index 85bc6f5224f4b5cfbe00454475a804ab71d64b6d..2782bcd3e15817a865b6ae36a2a484eab8d1501c 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkMap.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkMap.java
-@@ -130,7 +130,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
+@@ -129,7 +129,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
      public final LongSet entitiesInLevel;
      public final ServerLevel level;
      private final ThreadedLevelLightEngine lightEngine;
@@ -4946,7 +4946,7 @@ index 7c5b3acd299c5b021bd20f17ff0b89c8208a6623..d29739c3a67e60741a06fb25bcaf7705
          super(wrapped.getPos(), UpgradeData.EMPTY, wrapped.levelHeightAccessor, wrapped.getLevel().registryAccess().registryOrThrow(Registry.BIOME_REGISTRY), wrapped.getBlendingData());
          this.wrapped = wrapped;
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 033051de0fe335a5a826c6ab2730fcd1ab32f8d5..925b600b86d25e594624a9a4828d218dcdc39121 100644
+index 265619981a81ea1f3556702fe5aba99800af963b..94e679efda5cd600a91f6d19fbd39adbbca12c38 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -99,6 +99,10 @@ public class LevelChunk extends ChunkAccess {

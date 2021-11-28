@@ -5,10 +5,10 @@ Subject: [PATCH] Add config for mobs immune to default effects
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-index 0a1e4986fdcdab8ed32189ff2a92158db8c90487..69a05d45f02ac2a0e0a9cbde0e26b191985aec9a 100644
+index c4ee757e4c8e796b402a56803d4031e90a85d916..ed2b33afffdf975513c07ba8db6439810e444852 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-@@ -683,6 +683,21 @@ public class PaperWorldConfig {
+@@ -682,6 +682,21 @@ public class PaperWorldConfig {
          log("Hopper Ignore Occluding Blocks: " + (hoppersIgnoreOccludingBlocks ? "enabled" : "disabled"));
      }
  

@@ -10,10 +10,10 @@ This patch changes sign command logic so that `run_command` click events:
   - sends failure messages to the player who clicked the sign
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-index 0c6c501e6f1de51cdb4acec73e82ac7fa44cf180..0a1e4986fdcdab8ed32189ff2a92158db8c90487 100644
+index 24f784209109f599fab11ba8c905f16c304dba3c..c4ee757e4c8e796b402a56803d4031e90a85d916 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperWorldConfig.java
-@@ -828,4 +828,9 @@ public class PaperWorldConfig {
+@@ -827,4 +827,9 @@ public class PaperWorldConfig {
      private void fixInvulnerableEndCrystalExploit() {
          fixInvulnerableEndCrystalExploit = getBoolean("unsupported-settings.fix-invulnerable-end-crystal-exploit", fixInvulnerableEndCrystalExploit);
      }
