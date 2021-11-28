@@ -19,7 +19,7 @@ index d7734fbc6b684b14bc32c94e65947fb41aae126a..80345730b8ccc11d3d0833485d25b03f
 +    }
  }
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index f72a2cd5ceccffd860b50a727bbf2aa14858f995..666b3f051ed7313ce2e5909c84e7b81bb48d8a87 100644
+index f72a2cd5ceccffd860b50a727bbf2aa14858f995..5fa3c9e37380917a643e3a4774ca2df84e33f72d 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -260,7 +260,7 @@ public class LevelChunk extends ChunkAccess {
@@ -31,3 +31,16 @@ index f72a2cd5ceccffd860b50a727bbf2aa14858f995..666b3f051ed7313ce2e5909c84e7b81b
          this.needsDecoration = true; // CraftBukkit
      }
  
+@@ -579,6 +579,12 @@ public class LevelChunk extends ChunkAccess {
+                     "Chunk coordinates: " + (this.chunkPos.x * 16) + "," + (this.chunkPos.z * 16));
+             e.printStackTrace();
+             com.destroystokyo.paper.exception.ServerInternalException.reportInternalException(e);
++
++            if (this.level.paperConfig.removeCorruptTEs) {
++                this.removeBlockEntity(blockEntity.getBlockPos());
++                this.setUnsaved(true);
++                org.bukkit.Bukkit.getLogger().info("Removing corrupt tile entity");
++            }
+             // Paper end
+             // CraftBukkit end
+         }
