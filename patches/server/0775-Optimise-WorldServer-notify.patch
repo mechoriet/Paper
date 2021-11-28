@@ -169,10 +169,10 @@ index d47b21b5edc2734cdd45ed3282df98babe0045c0..3b5dd838bc8759bd849f5dd2ee0f260a
  
          public void onTrackingStart(Entity entity) {
 diff --git a/src/main/java/net/minecraft/world/entity/ai/navigation/PathNavigation.java b/src/main/java/net/minecraft/world/entity/ai/navigation/PathNavigation.java
-index 5884fb42f0880585dee843b98a6ea470a1508e46..4651c2e78089ed28220e767654261c735d2c5eb1 100644
+index a19263c3084feb1360bacf9dd56391385a7cf3a3..1c8bde4df06573b0d2e3791f54eec81bc04a5b6e 100644
 --- a/src/main/java/net/minecraft/world/entity/ai/navigation/PathNavigation.java
 +++ b/src/main/java/net/minecraft/world/entity/ai/navigation/PathNavigation.java
-@@ -27,7 +27,7 @@ import net.minecraft.world.phys.Vec3;
+@@ -26,7 +26,7 @@ import net.minecraft.world.phys.Vec3;
  
  public abstract class PathNavigation {
      private static final int MAX_TIME_RECOMPUTE = 20;
@@ -181,7 +181,7 @@ index 5884fb42f0880585dee843b98a6ea470a1508e46..4651c2e78089ed28220e767654261c73
      protected final Level level;
      @Nullable
      protected Path path;
-@@ -40,7 +40,7 @@ public abstract class PathNavigation {
+@@ -39,7 +39,7 @@ public abstract class PathNavigation {
      protected long lastTimeoutCheck;
      protected double timeoutLimit;
      protected float maxDistanceToWaypoint = 0.5F;
@@ -190,7 +190,7 @@ index 5884fb42f0880585dee843b98a6ea470a1508e46..4651c2e78089ed28220e767654261c73
      protected long timeLastRecompute;
      protected NodeEvaluator nodeEvaluator;
      @Nullable
-@@ -50,6 +50,13 @@ public abstract class PathNavigation {
+@@ -49,6 +49,13 @@ public abstract class PathNavigation {
      public final PathFinder pathFinder;
      private boolean isStuck;
  
@@ -204,7 +204,7 @@ index 5884fb42f0880585dee843b98a6ea470a1508e46..4651c2e78089ed28220e767654261c73
      public PathNavigation(Mob mob, Level world) {
          this.mob = mob;
          this.level = world;
-@@ -415,7 +422,7 @@ public abstract class PathNavigation {
+@@ -414,7 +421,7 @@ public abstract class PathNavigation {
      }
  
      public void recomputePath(BlockPos pos) {
