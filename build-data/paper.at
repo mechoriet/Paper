@@ -289,3 +289,6 @@ public net.minecraft.world.level.levelgen.SurfaceSystem getOrCreateRandomFactory
 
 # Fix removing recipes
 public net.minecraft.world.item.crafting.RecipeManager byName
+
+#Faster Redstone
+public net.minecraft.world.level.block.Block asBlock()Lnet/minecraft/world/level/block/Block;

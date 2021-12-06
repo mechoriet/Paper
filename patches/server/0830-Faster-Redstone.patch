@@ -5,10 +5,10 @@ Subject: [PATCH] Faster Redstone
 
 
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index e371ffb1f88e08883a1a2460260ff368c0cfe853..1953325679b40e5ea9e51adfc2645581a2006375 100644
+index 28f605c3daa969c1a54745e552d55ecb874120a9..8fb39a651aa5e5e715d03dc89f457e5b32233bb9 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
-@@ -20,8 +20,10 @@ import java.nio.file.Files;
+@@ -21,8 +21,10 @@ import java.nio.file.Files;
  import java.nio.file.Path;
  import java.util.ArrayList;
  import java.util.Comparator;
@@ -19,7 +19,7 @@ index e371ffb1f88e08883a1a2460260ff368c0cfe853..1953325679b40e5ea9e51adfc2645581
  import java.util.Objects;
  import java.util.Optional;
  import java.util.Set;
-@@ -147,6 +149,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
+@@ -149,6 +151,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
  import net.minecraft.world.phys.shapes.Shapes;
  import net.minecraft.world.phys.shapes.VoxelShape;
  import net.minecraft.world.ticks.LevelTicks;
@@ -29,7 +29,7 @@ index e371ffb1f88e08883a1a2460260ff368c0cfe853..1953325679b40e5ea9e51adfc2645581
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
  import org.bukkit.Bukkit;
-@@ -160,7 +165,7 @@ import org.bukkit.event.world.TimeSkipEvent;
+@@ -162,7 +167,7 @@ import org.bukkit.event.world.TimeSkipEvent;
  // CraftBukkit end
  import it.unimi.dsi.fastutil.ints.IntArrayList; // Paper
  
@@ -38,7 +38,7 @@ index e371ffb1f88e08883a1a2460260ff368c0cfe853..1953325679b40e5ea9e51adfc2645581
  
      public static final BlockPos END_SPAWN_POINT = new BlockPos(100, 50, 0);
      private static final int MIN_RAIN_DELAY_TIME = 12000;
-@@ -2490,4 +2495,10 @@ public class ServerLevel extends Level implements WorldGenLevel {
+@@ -2534,4 +2539,10 @@ public class ServerLevel extends Level implements WorldGenLevel {
              new com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent(entity.getBukkitEntity()).callEvent(); // Paper - fire while valid
          }
      }
@@ -81,7 +81,7 @@ index 2036006b934ba1f27da606320b4c456af019a361..9b6167d05784cb322e0fdaa7a794801e
 +    }
  }
 diff --git a/src/main/java/net/minecraft/world/level/block/Block.java b/src/main/java/net/minecraft/world/level/block/Block.java
-index ab5b9f00123e2ede2931ffc520684e482aac49b4..cbbc3059de743647df19473db14f17f4547e2b9a 100644
+index 1e9edaa30d9250c9ecf9ee4a6c9e3978e13e2af2..92de7589d5d543b2cbcd2c0ab560763b4c500827 100644
 --- a/src/main/java/net/minecraft/world/level/block/Block.java
 +++ b/src/main/java/net/minecraft/world/level/block/Block.java
 @@ -60,10 +60,11 @@ import net.minecraft.world.phys.Vec3;

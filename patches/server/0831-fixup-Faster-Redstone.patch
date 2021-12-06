@@ -1,0 +1,43 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: mechoriet <kevinworm92@gmail.com>
+Date: Mon, 6 Dec 2021 20:59:28 +0100
+Subject: [PATCH] fixup! Faster Redstone
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/RedStoneWireBlock.java b/src/main/java/net/minecraft/world/level/block/RedStoneWireBlock.java
+index 3cf376eeb474cc221893740f94cd8a6d0a7daee2..1c8bf3837d2dc8433aebfd9bc4ea0b0f89878028 100644
+--- a/src/main/java/net/minecraft/world/level/block/RedStoneWireBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/RedStoneWireBlock.java
+@@ -470,6 +470,22 @@ public class RedStoneWireBlock extends Block implements WireBlock {
+ 
+     @Override
+     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean notify) {
++        if (true) { //True always will be setting later
++            ((IServerWorld)world).getAccess(this).getWireHandler().onWireAdded(pos);
++
++            // Because of a check in World.setBlockState, shape updates
++            // after placing a block are omitted if the block state
++            // changes while setting it in the chunk. This can happen
++            // due to the above call to the wire handler. To make sure
++            // connections are properly updated after placing a redstone
++            // wire, shape updates are emitted here.
++            BlockState newState = world.getBlockState(pos);
++
++            if (newState != state) {
++                newState.updateNeighbourShapes(world, pos, Block.UPDATE_CLIENTS);
++                newState.updateIndirectNeighbourShapes(world, pos, Block.UPDATE_CLIENTS);
++            }
++        }
+         if (!oldState.is(state.getBlock()) && !world.isClientSide) {
+             this.updateSurroundingRedstone(world, pos, state, null); // Paper - Optimize redstone
+             Iterator iterator = Direction.Plane.VERTICAL.iterator();
+@@ -486,6 +502,9 @@ public class RedStoneWireBlock extends Block implements WireBlock {
+ 
+     @Override
+     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
++        if (true) { //True always will be setting later
++            ((IServerWorld)world).getAccess(this).getWireHandler().onWireRemoved(pos);
++        }
+         if (!moved && !state.is(newState.getBlock())) {
+             super.onRemove(state, world, pos, newState, moved);
+             if (!world.isClientSide) {
